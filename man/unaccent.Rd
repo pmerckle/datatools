@@ -16,6 +16,6 @@ An unaccented character vector.
 This function removes accents from character strings.
 }
 \examples{
-unaccent("Jérémie")
-unaccent("Héloïse")
+unaccent("JÃ©rÃ©mie")
+unaccent("HÃ©loÃ¯se")
 }

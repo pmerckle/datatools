@@ -6,7 +6,7 @@ License: GPL
 Encoding: UTF-8
 Authors@R: c(
     person("Pierre", "Mercklé", email = "pierre.merckle@free.fr", role = c("aut", "cre")),
-    person("Anton", "Perdoncin", email = "anton.perdoncin@ehess.fr", role = "aut")),
+    person("Anton", "Perdoncin", email = "anton.perdoncin@ehess.fr", role = "aut"),
     person("Baptiste", "Coulmont", email = "coulmont@gmail.com", role = "aut"))
 Description: The datatools package provides a set of functions for historical and social science quantitative research.
 URL: http://github.com/pmerckle/datatools
@@ -17,7 +17,7 @@ Imports:
     magrittr,
     stringr
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Suggests: 
     knitr,
     rmarkdown
