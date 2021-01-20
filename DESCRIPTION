@@ -1,15 +1,16 @@
-Package: firstnamer
-Title: Set of Functions Using First Name Databases
+Package: datatools
+Title: Set of Functions for Historical and Social Science Quantitative Research
 Version: 0.0.9000
-Date: 2019-03-11
+Date: 2021-01-20
 License: GPL
 Encoding: UTF-8
 Authors@R: c(
     person("Pierre", "Mercklé", email = "pierre.merckle@free.fr", role = c("aut", "cre")),
+    person("Anton", "Perdoncin", email = "anton.perdoncin@ehess.fr", role = "aut")),
     person("Baptiste", "Coulmont", email = "coulmont@gmail.com", role = "aut"))
-Description: The firstnamer package provides a set of useful functions using first name databases.
-URL: http://github.com/pmerckle/firstnamer
-BugReports: http://github.com/pmerckle/firstnamer/issues
+Description: The datatools package provides a set of functions for historical and social science quantitative research.
+URL: http://github.com/pmerckle/datatools
+BugReports: http://github.com/pmerckle/datatools/issues
 Depends: R (>= 3.1.0)
 Imports:
     dplyr,

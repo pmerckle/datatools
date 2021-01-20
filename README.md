@@ -1,7 +1,7 @@
-firstnamer
+datatools
 ==========
 
-R package providing a set of functions using first name databases.
+R package providing a set of functions for historical and social science quantitative research.
 
 
 ## Installation
@@ -10,5 +10,5 @@ Latest version from GitHub :
 
 ```r
 library(devtools)
-install_github("pmerckle/firstnamer")
+install_github("pmerckle/datatools")
 ```

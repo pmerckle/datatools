@@ -1,0 +1,24 @@
+---
+title: "Introduction to datatools"
+author: "Pierre Mercklé, Anton Perdoncin and Baptiste Coulmont"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to firstnamer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+De plus en plus de chercheurs en histoire et en sciences sociales utilisent R dans leurs travaux.
+Mais les outils spécifiques dont ils ont besoin ne sont pas forcément disponibles dans ce logiciel, pour telle et telle raison. Par exemple...
+C'est la raison pour laquelle...
+Le package datatools se propose de...
+Il offre déjà...

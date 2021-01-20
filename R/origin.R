@@ -1,4 +1,4 @@
-# firstnamer::origin()
+# datatools::origin()
 #
 # This is the function named 'origin' and its variations,
 # which get information about origin from first name

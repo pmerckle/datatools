@@ -1,4 +1,4 @@
-# firstnamer::gender()
+# datatools::gender()
 #
 # This is the function named 'gender' and its variations,
 # which get information about gender from first name
