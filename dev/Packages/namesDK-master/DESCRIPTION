@@ -1,0 +1,11 @@
+Package: namesDK
+Type: Package
+Title: Gender classifier for danish names
+Version: 0.1.0
+Author: Mikkel Freltoft Krogsholm
+Maintainer: Mikkel Freltoft Krogsholm <mikkel@56n.dk>
+Description: The function uses the official danish lists of male, female and unisex first names to classify names as either male, female or unisex. If a name can not be determined as either one of those three it will return as NA.
+License: What license is it under?
+LazyData: TRUE
+RoxygenNote: 5.0.1
+Imports: stringr

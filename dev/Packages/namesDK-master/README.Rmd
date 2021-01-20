@@ -1,0 +1,28 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+# namesDK
+
+## Gender classifier for danish names
+
+Description
+
+The function uses the official danish lists of male, female and unisex first names to classify names as either male, female or unisex. If a name can not be determined as either one of those three it will return as NA.
+
+Examples
+
+```{r}
+library(namesDK)
+gender("Lars Løkke Rasmussen")
+gender(c("Helle Thorning Smidt", "Lars Løkke Rasmussen", "Traktor Troels"))
+```
