@@ -25,7 +25,7 @@
 
 soundex <- function(string, method = "Daitch-Mokotoff") {
   # Copy into result
-  result <- name
+  result <- string
   # Clean name encoding
   result[is.null(result)] <- NA
   result <- as.character(result)

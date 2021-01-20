@@ -27,11 +27,11 @@ rm(list = c("fn_fr", "fn_or", "gender", "n", "unaccent"))
 
 .libPaths("C:/Users/mercklep/Documents/R/win-library/3.6")
 library(devtools)
-devtools::install_github("pmerckle/datatools")
 
+devtools::install_github("pmerckle/datatools")
 library(datatools)
 
-soundex("Mercklé")
+soundex("Berlin")
 gender_unique("Pierre")
 gender("Armando")
 gender(c("Jacques", "Bernadette", "Nicolas", "Carla", "François", "Julie", "Emmanuel", "Brigitte"))
