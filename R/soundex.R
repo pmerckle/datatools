@@ -22,6 +22,7 @@
 #' soundex("Moskovitz", method = "Daitch-Mokotoff")
 #' soundex("Lubartow", method = "Daitch-Mokotoff")
 #' @import stringr
+#' @export
 
 soundex <- function(string, method = "Daitch-Mokotoff") {
   # Copy into result

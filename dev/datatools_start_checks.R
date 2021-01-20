@@ -15,46 +15,49 @@ library(devtools)
 
 
 
-
 # Test package ----
+
 
 # Check package
 check()
 rm(list = c("fn_fr", "fn_or", "gender", "n", "unaccent"))
 
-# General test
 
-
-.libPaths("C:/Users/mercklep/Documents/R/win-library/3.6")
-library(devtools)
-
+# Download online version
 devtools::install_github("pmerckle/datatools")
 library(datatools)
 
-soundex("Berlin")
-gender_unique("Pierre")
+
+# Test functions
+
+gender("Henry")
+gender(c("Patrick", "Michelle"))
 gender("Armando")
 gender(c("Jacques", "Bernadette", "Nicolas", "Carla", "François", "Julie", "Emmanuel", "Brigitte"))
 gender("Camille", year_max = 1950)
 gender("Camille", year_min = 1950)
-year("Théoxane")
 
-# Help pages
-package?datatools
-?unaccent
-?gender_unique
-
-# Functions
-unaccent("Jérémie")
-gender("Henry")
-gender(c("Patrick", "Michelle"))
+is_female("Martin")
 is_female("Marcelle")
+
+is_male("Jacques")
+
 year("Théo")
 year(c("Anouk", "Lilia"))
-origin(c("Lars", "Ahmed", "Férouze", "Merike", "Merja"))
+year("Théoxane")
 
-# Create new vignette
-usethis::use_vignette("datatools")
+soundex("Berlin")
+
+unaccent("Jérémie")
+
+
+# Help pages
+
+?datatools
+?gender
+?soundex
+?unaccent
+
 
 
 # SANDBOX ----
