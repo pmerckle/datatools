@@ -3,6 +3,7 @@
 export(gender)
 export(is_female)
 export(is_male)
+export(soundex)
 export(unaccent)
 export(year)
 import(dplyr)

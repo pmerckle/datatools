@@ -30,6 +30,7 @@ library(devtools)
 devtools::install_github("pmerckle/datatools")
 
 library(datatools)
+
 soundex("Mercklé")
 gender_unique("Pierre")
 gender("Armando")
@@ -53,7 +54,7 @@ year(c("Anouk", "Lilia"))
 origin(c("Lars", "Ahmed", "Férouze", "Merike", "Merja"))
 
 # Create new vignette
-devtools::use_vignette("firstnamer")
+usethis::use_vignette("datatools")
 
 
 # SANDBOX ----
