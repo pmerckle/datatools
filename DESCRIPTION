@@ -2,7 +2,7 @@ Package: datatools
 Title: Set of Functions for Historical and Social Science Quantitative Research
 Version: 0.0.9000
 Date: 2021-01-20
-License: GPL
+License: GPL-3
 Encoding: UTF-8
 Authors@R: c(
     person("Pierre", "Mercklé", email = "pierre.merckle@free.fr", role = c("aut", "cre")),
