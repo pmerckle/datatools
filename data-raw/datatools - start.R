@@ -18,6 +18,7 @@ library(devtools)
 # Libraries ----
 
 library(dplyr)
+library(readxl)
 library(magrittr)
 library(stringr)
 
@@ -27,12 +28,30 @@ library(stringr)
 
 
 
+# > SOUNDEX ----
+
+# Import DM rules
+dm_rules <- read_excel("data-raw/daitch-mokotoff_encoding_table_modif.xlsx") %>%
+  arrange(desc(pattern)) %>% # order by decreasing alphabetical order to apply IE before EJ
+  arrange(desc(nchar(pattern))) # Order by decreasing length of patterns, to make sure that longer patterns are searched and replaced before shorter ones
+
+# Save data
+usethis::use_data(dm_rules, internal = TRUE, overwrite = TRUE)
+
+
+
 # > FRANCE : Fichier des prénoms ----
 
-# Load and unzip data file
+# Load and unzip data file 2017
+# temp <- tempfile()
+# download.file("https://www.insee.fr/fr/statistiques/fichier/2540004/nat2017_txt.zip",temp)
+# fn_fr <- read.table(unz(temp, "nat2017.txt"), stringsAsFactors = FALSE, encoding = "UTF-8")
+# unlink(temp)
+
+# Load and unzip data file 2019
 temp <- tempfile()
-download.file("https://www.insee.fr/fr/statistiques/fichier/2540004/nat2017_txt.zip",temp)
-fn_fr <- read.table(unz(temp, "nat2017.txt"), stringsAsFactors = FALSE, encoding = "UTF-8")
+download.file("https://www.insee.fr/fr/statistiques/fichier/2540004/nat2019_csv.zip",temp)
+fn_fr <- read.table(unz(temp, "nat2019.csv"), header = TRUE, sep = ";", stringsAsFactors = FALSE, encoding = "UTF-8")
 unlink(temp)
 
 # Clean data
@@ -66,10 +85,10 @@ fn_fr$firstname <- str_replace_all(fn_fr$fn, c(
   "Ã™" = "U"
 ))
 # Save data
-devtools::use_data(fn_fr, internal = TRUE, overwrite = TRUE)
+usethis::use_data(fn_fr, internal = TRUE, overwrite = TRUE)
 
 # Recode source data
-devtools::use_data_raw()
+usethis::use_data_raw()
 
 
 # > INTERNATIONAL : behindthename.com ----
@@ -111,8 +130,8 @@ origin_unique("Adèle")
 # General test
 .libPaths("C:/R")
 library(devtools)
-devtools::install_github("pmerckle/firstnamer")
-library(firstnamer)
+devtools::install_github("pmerckle/datatools")
+library(datatools)
 gender_unique("Pierre")
 gender("Armando")
 gender(c("Jacques", "Bernadette", "Nicolas", "Carla", "François", "Julie", "Emmanuel", "Brigitte"))
@@ -121,7 +140,7 @@ gender("Camille", year_min = 1950)
 year("Théoxane")
 
 # Help pages
-package?firstnamer
+package?datatools
 ?unaccent
 ?gender_unique
 
