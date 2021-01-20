@@ -1,3 +1,4 @@
+^draft$
 ^data-raw$
 ^.*\.Rproj$
 ^\.Rproj\.user$

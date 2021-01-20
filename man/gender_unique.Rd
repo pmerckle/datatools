@@ -4,8 +4,7 @@
 \alias{gender_unique}
 \title{Predict gender from first name}
 \usage{
-gender_unique(first_name, year_min = 1900, year_max = 2017,
-  freq = FALSE)
+gender_unique(first_name, year_min = 1900, year_max = 2017, freq = FALSE)
 }
 \arguments{
 \item{first_name}{first name as a character string.}
