@@ -30,16 +30,13 @@ save(dm_rules, file = "data-raw/dm_rules.RData")
 # > FRANCE : Fichier des prénoms ----
 
 # Load and unzip data file 2017
-# temp <- tempfile()
-# download.file("https://www.insee.fr/fr/statistiques/fichier/2540004/nat2017_txt.zip",temp)
-# fn_fr <- read.table(unz(temp, "nat2017.txt"), stringsAsFactors = FALSE, encoding = "UTF-8")
-# unlink(temp)
+fn_fr <- read.table("data-raw/nat2017.txt", stringsAsFactors = FALSE, encoding = "UTF-8")
 
 # Load and unzip data file 2019
-temp <- tempfile()
-download.file("https://www.insee.fr/fr/statistiques/fichier/2540004/nat2019_csv.zip",temp)
-fn_fr <- read.table(unz(temp, "nat2019.csv"), header = TRUE, sep = ";", stringsAsFactors = FALSE, encoding = "UTF-8")
-unlink(temp)
+# temp <- tempfile()
+# download.file("https://www.insee.fr/fr/statistiques/fichier/2540004/nat2019_csv.zip",temp)
+# fn_fr <- read.table(unz(temp, "nat2019.csv"), header = TRUE, sep = ";", stringsAsFactors = FALSE, encoding = "UTF-8")
+# unlink(temp)
 
 # Clean data
 names(fn_fr) <- c("sex", "fn", "year", "count")

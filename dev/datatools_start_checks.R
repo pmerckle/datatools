@@ -20,6 +20,7 @@ library(devtools)
 
 # Check package
 check()
+rm(list = c("fn_fr", "fn_or", "gender", "n", "unaccent"))
 
 # General test
 
