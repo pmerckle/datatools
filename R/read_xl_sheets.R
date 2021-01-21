@@ -13,6 +13,7 @@
 #' read_xl_sheets(path)
 #' read_xl_sheets(path, skip = 2)
 #' }
+#' @import readxl
 #' @export
 
 read_xl_sheets <- function(path, skip){
