@@ -2,10 +2,10 @@
 #'
 #'Import Excel workbook with multiple sheets
 #'
-#'This function imports multiple Excel sheets into tibbles in R Global Environment.
+#'This function imports multiple sheets contained in a .xls/.xlsx spreadsheet into distinct tibbles.
 #'
-#' @param path path to the Excel workbook .
-#' @param skip An integer: number of rows to be skiped in the beginning of each sheet.
+#' @param path path to the xls/xlsx file.
+#' @param skip An integer: number of rows to be skiped in the beginning of each sheet; default = 0.
 #' @return A series of tibbles corresponding to the different sheets contained in the Excel workbook.
 #' @examples
 #' \dontrun{
@@ -16,7 +16,7 @@
 #' @import readxl
 #' @export
 
-read_xl_sheets <- function(path, skip){
+read_xl_sheets <- function(path, skip = 0){
 
   sheetnames <- readxl::excel_sheets(path) # get sheetnames
   sheetlist <- sapply(sheetnames, function (x){readxl::read_excel(path, sheet = x, skip = skip)})
