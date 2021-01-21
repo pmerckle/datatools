@@ -18,7 +18,7 @@
 
 read_xl_sheets <- function(path, skip){
 
-  sheetnames <- excel_sheets(path) # get sheetnames
+  sheetnames <- readxl::excel_sheets(path) # get sheetnames
   sheetlist <- sapply(sheetnames, function (x){readxl::read_excel(path, sheet = x, skip = skip)})
   for (sh in sheetnames) {
     sheetlist[[sh]] <- as_tibble(sheetlist[[sh]]) # create list containing each sheet
