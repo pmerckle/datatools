@@ -4,12 +4,12 @@
 \alias{read_xl_sheets}
 \title{datatools::read_xl_sheets}
 \usage{
-read_xl_sheets(path, skip)
+read_xl_sheets(path, skip = 0)
 }
 \arguments{
-\item{path}{path to the Excel workbook .}
+\item{path}{path to the xls/xlsx file.}
 
-\item{skip}{An integer: number of rows to be skiped in the beginning of each sheet.}
+\item{skip}{An integer: number of rows to be skiped in the beginning of each sheet; default = 0.}
 }
 \value{
 A series of tibbles corresponding to the different sheets contained in the Excel workbook.
@@ -18,7 +18,7 @@ A series of tibbles corresponding to the different sheets contained in the Excel
 Import Excel workbook with multiple sheets
 }
 \details{
-This function imports multiple Excel sheets into tibbles in R Global Environment.
+This function imports multiple sheets contained in a .xls/.xlsx spreadsheet into distinct tibbles.
 }
 \examples{
 \dontrun{
