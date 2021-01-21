@@ -49,6 +49,7 @@ unaccent <- function(string) {
 #' gender_unique("Henriette")
 #' @import dplyr
 #' @import magrittr
+#' @export
 
 gender_unique <- function(first_name, year_min = 1900, year_max = 2017, freq = FALSE) {
   temp <- fn_fr %>% filter(fn == toupper(unaccent(first_name)) & year >= year_min & year <= year_max) %>%
@@ -77,7 +78,7 @@ gender_unique <- function(first_name, year_min = 1900, year_max = 2017, freq = F
 #' @seealso
 #' \code{\link{gender_unique}}, \code{\link{is_male}}, \code{\link{is_female}}
 #' @examples
-#' gender(c("Baptiste", "Henriette")
+#' gender(c("Baptiste", "Henriette"))
 #' @export
 
 gender <- function(firstname, year_min = 1900, year_max = 2017, freq = FALSE) as.vector(sapply(firstname, gender_unique, year_min = year_min, year_max = year_max, freq = freq))
@@ -94,7 +95,7 @@ gender <- function(firstname, year_min = 1900, year_max = 2017, freq = FALSE) as
 #' @seealso
 #' \code{\link{gender_unique}}, \code{\link{gender}}, \code{\link{is_female}}
 #' @examples
-#' is_male(c("Baptiste", "Annick")
+#' is_male(c("Baptiste", "Annick"))
 #' @export
 
 is_male <- function(firstname, year_min = 1900, year_max = 2017) gender(firstname, year_min = year_min, year_max = year_max) == "male"
@@ -111,7 +112,7 @@ is_male <- function(firstname, year_min = 1900, year_max = 2017) gender(firstnam
 #' @seealso
 #' \code{\link{gender_unique}}, \code{\link{gender}}, \code{\link{is_male}}
 #' @examples
-#' is_female(c("Baptiste", "Annick")
+#' is_female(c("Baptiste", "Annick"))
 #' @export
 
 is_female <- function(firstname, year_min = 1900, year_max = 2017) gender(firstname, year_min = year_min, year_max = year_max) == "female"
@@ -166,7 +167,7 @@ year_unique <- function(first_name, year_min = 1946, year_max = 2017) {
 #' @return
 #' The predicted years of birth based on the proportions of individuals with the input first names born each year. The function returns the modes of the distributions, i.e. the years with the highest numbers of individuals born by the input firstnames. NAs are returned when the input first names are unknown in the database.
 #' @examples
-#' year(c("Baptiste", "Henriette")
+#' year(c("Baptiste", "Henriette"))
 #' @export
 
 year <- function(firstname, year_min = 1946, year_max = 2017) as.vector(sapply(firstname, year_unique, year_min = year_min, year_max = year_max))

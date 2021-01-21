@@ -16,7 +16,7 @@ Logical. TRUE if the input first name is female, FALSE otherwise. NA is returned
 This function predicts whether the genders of first names are female.
 }
 \examples{
-is_female(c("Baptiste", "Annick")
+is_female(c("Baptiste", "Annick"))
 }
 \seealso{
 \code{\link{gender_unique}}, \code{\link{gender}}, \code{\link{is_male}}
