@@ -23,7 +23,7 @@ If freq is set to TRUE, the function returns the probabilities of the first name
 This function predicts the genders of a vector of first names.
 }
 \examples{
-gender(c("Baptiste", "Henriette")
+gender(c("Baptiste", "Henriette"))
 }
 \seealso{
 \code{\link{gender_unique}}, \code{\link{is_male}}, \code{\link{is_female}}

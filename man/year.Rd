@@ -18,5 +18,5 @@ The predicted years of birth based on the proportions of individuals with the in
 This function predicts the years of birth of individuals from a vector of first names.
 }
 \examples{
-year(c("Baptiste", "Henriette")
+year(c("Baptiste", "Henriette"))
 }
