@@ -40,11 +40,11 @@ gender("Camille", year_min = 1950)
 is_female("Martin")
 is_female("Marcelle")
 
-is_male("Jacques")
+is_male("Zorglub")
 
 year("Théo")
 year(c("Anouk", "Lilia"))
-year("Théoxane")
+year("Nathalie")
 
 soundex("Berlin")
 
