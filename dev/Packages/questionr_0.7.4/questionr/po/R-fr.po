@@ -1,0 +1,312 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: questionr\n"
+"Report-Msgid-Bugs-To: bugs.r-project.org\n"
+"POT-Creation-Date: 2020-10-26 18:21\n"
+"PO-Revision-Date: 2020-10-26 18:19+0100\n"
+"Last-Translator: Julien Barnier <julien@nozav.org>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+
+msgid "no method specified for this kind of object."
+msgstr "pas de méthode spécifiée pour ce type d'objet."
+
+msgid "must be a vector, a factor or a data frame."
+msgstr "x doit être un facteur ou un data frame."
+
+msgid "must be a column of"
+msgstr "doit être une colonne de"
+
+msgid "."
+msgstr "."
+
+msgid "Interactive cutting"
+msgstr "Découpage interactif"
+
+msgid "Variable and settings"
+msgstr "Variable et paramètres"
+
+msgid "Variable to be recoded"
+msgstr "Variable à recoder"
+
+msgid "Data frame or vector to recode from"
+msgstr "Data frame ou vecteur à recoder"
+
+msgid "Recoding settings"
+msgstr "Paramètres du recodage"
+
+msgid "Cutting"
+msgstr "Découpage en classes"
+
+msgid "Cutting method"
+msgstr "Méthode"
+
+msgid "Right-closed intervals (<tt>right</tt>)"
+msgstr "Intervalles fermés à droite  (<tt>right</tt>)"
+
+msgid "Include extreme (<tt>include.lowest</tt>)"
+msgstr "Inclure la valeur extrême  (<tt>include.lowest</tt>)"
+
+msgid "Append extreme values if necessary"
+msgstr "Ajouter les valeurs extrêmes si nécessaire"
+
+msgid "Label digits (<tt>dig.lab</tt>)"
+msgstr "Nombre de chiffres pour les labels (<tt>dig.lab</tt>)"
+
+msgid "Code and result"
+msgstr "Code et résultat"
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Check - table"
+msgstr "Vérification - tableau"
+
+msgid "Check - barplot"
+msgstr "Vérification - graphique"
+
+msgid "Data frame column to recode"
+msgstr "Colonne du data frame à recoder"
+
+msgid "New variable name"
+msgstr "Nouvelle variable"
+
+msgid "<p>Statistics of <tt>%s</tt> :</p>"
+msgstr "<p>Statistiques de <tt>%s</tt> :</p>"
+
+msgid "Breaks number"
+msgstr "Nombre d'intervalles"
+
+msgid "<strong>Warning :</strong> This new variable already exists."
+msgstr "<strong>Attention :</strong> Cette nouvelle variable existe déjà."
+
+msgid "invalid number of intervals"
+msgstr "nombre d'intervalles invalide"
+
+msgid "## Cutting %s into %s"
+msgstr "## Recodage de %s en %s"
+
+msgid "Original histogram"
+msgstr "Variable originale"
+
+msgid "-------- Start recoding code --------"
+msgstr "-------- Début du code --------"
+
+msgid "--------- End recoding code ---------"
+msgstr "--------- Fin du code ---------"
+
+msgid "Interactive levels ordering"
+msgstr "Réordonnancement interactif"
+
+msgid "Recoding style"
+msgstr "Style de recodage"
+
+msgid "Ordering"
+msgstr "Réordonner"
+
+msgid "Check"
+msgstr "Vérification"
+
+msgid "Old variable as rows, new variable as columns."
+msgstr "Ancienne variable en ligne, variable recodée en colonne."
+
+msgid ""
+"<strong>Warning :</strong> The variable to be recoded has more than 50 "
+"levels."
+msgstr ""
+"<strong>Attention :</strong> La variable à recoder comporte plus de 50 "
+"valeurs distinctes."
+
+msgid ""
+"<strong>Warning :</strong> The <tt>forcats</tt> package must be installed "
+"and loaded for the generated code to be run."
+msgstr ""
+"<strong>Attention :</strong> Le package <tt>forcats</tt> doit être installé "
+"et chargé pour pouvoir exécuter le code généré."
+
+msgid "## Reordering %s"
+msgstr "## Réordonnancement de %s"
+
+msgid "into %s"
+msgstr "en %s"
+
+msgid ""
+"<p class='header'>Reordering <tt>%s</tt> from <tt>%s</tt> of class <tt>%s</"
+"tt>.</p>"
+msgstr ""
+"<p class='header'>Réordonnancement de <tt>%s</tt> depuis <tt>%s</tt> de "
+"classe <tt>%s</tt>.</p>"
+
+msgid "<p class='header'>Reordering <tt>%s</tt> of class <tt>%s</tt>.</p>"
+msgstr ""
+"<p class='header'>Réordonnancement de <tt>%s</tt> de classe <tt>%s</tt>.</p>"
+
+msgid "Interactive recoding"
+msgstr "Recodage interactif"
+
+msgid "Recoding"
+msgstr "Recodage"
+
+msgid "Output type"
+msgstr "Type de variable recodée"
+
+msgid "## Recoding %s into %s"
+msgstr "## Recodage de %s en %s"
+
+msgid "## Recoding %s"
+msgstr "## Recodage de %s"
+
+msgid ""
+"<p class='header'>Recoding <tt>%s</tt> from <tt>%s</tt> of class <tt>%s</tt>."
+"</p>"
+msgstr ""
+"<p class='header'>Recodage de <tt>%s</tt> depuis <tt>%s</tt> de classe <tt>"
+"%s</tt>.</p>"
+
+msgid "<p class='header'>Recoding <tt>%s</tt> of class <tt>%s</tt>.</p>"
+msgstr "<p class='header'>Recodage de <tt>%s</tt> de classe <tt>%s</tt>.</p>"
+
+msgid "x must be of class 'glm'."
+msgstr "x doit être de classe 'glm'."
+
+msgid "x should be a glm with family=binomial or family=quasibinomial."
+msgstr ""
+"x doit être de classe 'glm' avec 'family=binomial' ou 'family=quasibinomial'."
+
+msgid "x must be of class 'multinom'."
+msgstr "x doit être de classe 'multinom'."
+
+msgid "x must be of class 'factor'."
+msgstr "x doit être de classe 'factor'."
+
+msgid "x must be of class 'table'."
+msgstr "x doit être de classe 'table'."
+
+msgid "x must be of class 'matrix'."
+msgstr "x doit être de classe 'matrix'."
+
+msgid "x must be numeric."
+msgstr "x doit être numérique."
+
+msgid "x should be a simple value."
+msgstr "x doit être un nombre, pas un vecteur."
+
+msgid "x should be between 0 and 1"
+msgstr "x doit être compris entre 0 et 1"
+
+msgid "y must be numeric."
+msgstr "y doit être numérique."
+
+msgid "y should be a simple value."
+msgstr "y doit être un nombre, pas un vecteur."
+
+msgid "y should be between 0 and 1"
+msgstr "y doit être compris entre 0 et 1"
+
+msgid "x must be of class 'odds.ratio'"
+msgstr "x doit être de classe 'odds.ratio'."
+
+msgid "Recoded"
+msgstr "Recodage de"
+
+msgid "values to NA."
+msgstr "valeurs en NA."
+
+msgid "Recoded variable contains only numeric characters."
+msgstr "La variable recodée ne contient que des valeurs numériques."
+
+msgid "Consider using as.numeric = TRUE."
+msgstr "Pensez à utiliser as.numeric = TRUE."
+
+msgid ""
+"<strong>Warning :</strong> This interface doesn't do anything by itself."
+msgstr "<strong>Attention :</strong> Cette interface n'effectue aucune action."
+
+msgid ""
+"It will generate R code, insert it in your current R script, and you'll have "
+"to run it yourself."
+msgstr ""
+"Le code R généré sera inséré dans votre script R actuel, et vous devrez "
+"l'exécuter vous-mêmes."
+
+msgid ""
+"It only generates R code you'll have to copy/paste into your script and run "
+"yourself."
+msgstr ""
+"Vous devez copier le code R généré dans votre script et l'exécuter vous-"
+"mêmes."
+
+msgid "All"
+msgstr "Ensemble"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Choose between standardized and raw residuals."
+msgstr "Vous devez choisir entre résidus bruts et résidus standardisés."
+
+msgid "x must be of class 'proptab'"
+msgstr "x doit être de classe 'proptab'"
+
+msgid "Object is not of class proptab"
+msgstr "L'objet doit être de la classe proptab"
+
+msgid "x must be a factor or a data.frame."
+msgstr "x doit être un facteur ou un data frame."
+
+msgid "The package"
+msgstr "L'extension"
+
+msgid "could not be downloaded."
+msgstr "ne peut pas être téléchargée."
+
+msgid "Loaded package:"
+msgstr "Extension chargée :"
+
+msgid "x and weights lengths must be the same"
+msgstr "x et weights doivent être de la même taille"
+
+msgid "x and y lengths must be the same"
+msgstr "x et y doivent être de la même taille"
+
+msgid "questionr::wtd.var has been removed. Please use Hmisc::wtd.var instead."
+msgstr "questionr::wtd.var a été supprimé. Merci d'utiliser Hmisc::wtd.var."
+
+msgid "type must either be 'percent', 'proportion', or 'counts'."
+msgstr "type doit être 'percent', 'proportion', ou 'counts'."
+
+msgid "df must be a data.frame"
+msgstr "df doit être un data frame"
+
+msgid "not found in data frame."
+msgstr "non trouvé dans le data frame."
+
+#~ msgid "there are no names to search in that object"
+#~ msgstr ""
+#~ "il n'y a aucun nom dans lesquels effectuer une recherche pour cet objet"
+
+#~ msgid "Nothing found. Sorry."
+#~ msgstr "Désolé, aucun résultat n'a été trouvé."
+
+#~ msgid "No variables specified; showing top five results."
+#~ msgstr ""
+#~ "Aucune variable spécifiée; les cinq premiers résultats sont affichés."
+
+#~ msgid "must not be an object named \"dfobject\"."
+#~ msgstr "ne doit pas s'appeler \"dfobject\"."
+
+#~ msgid "New variable"
+#~ msgstr "Nouvelle variable"
+
+#~ msgid "Send code to console and exit"
+#~ msgstr "Copier le code dans la console et quitter"
+
+#~ msgid "<td>New variable : </td><td>"
+#~ msgstr "Nouvelle variable :"
+
+#~ msgid "Convert to factor"
+#~ msgstr "Convertir en factor"

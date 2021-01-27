@@ -2,7 +2,7 @@
 % Please edit documentation in R/soundex.R
 \name{soundex}
 \alias{soundex}
-\title{Phonetically encodes names using a soundex algorithm}
+\title{Daitch-Mokotoff Soundex Algorithm}
 \usage{
 soundex(string, method = "Daitch-Mokotoff")
 }

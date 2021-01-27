@@ -1,4 +1,4 @@
-# datatools::soundex()
+# soundex
 #
 # This is the function named 'soundex' and its variations,
 # which code soundexes from names
@@ -11,7 +11,7 @@
 
 # soundex ----
 
-#' Phonetically encodes names using a soundex algorithm
+#' Daitch-Mokotoff Soundex Algorithm
 #'
 #' This function encodes names using a soundex algorithm.
 #'
