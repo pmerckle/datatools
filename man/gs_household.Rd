@@ -15,8 +15,17 @@ gs_household(csind1, csind2)
 Computes the synthetic socio-economic class of a household from the individual socio-economic classes of its members
 }
 \details{
-# Création de la variable gemenage à un chiffre romain, à partir des 2 variables individuelles csindiv à 2 chiffres de la personne de référence et du conjoint. Cette fonction est utilisée directement pour créer la PCS Ménage.
+The function computes the French synthetic socio-economic class of a household by following the rules indicated in CNIS, 2019, p. 42 sq. The resulting classification distinguishes 7 groups, coded with latin numerals):\tabular{ll}{
+   Code \tab Category \cr
+   I \tab Ménages à dominante cadre \cr
+   II \tab Ménages à dominante intermédiaire ou cadre \cr
+   III \tab Ménages à dominante employée ou intermédiaire \cr
+   IV \tab Ménages à dominante petit indépendant \cr
+   V \tab Ménages à dominante ouvrière \cr
+   VI \tab Ménages mono-actifs d’employé ou d’ouvrier \cr
+   VII \tab Ménages inactifs \cr
+}
 }
 \seealso{
-\code{\link[datatools]{gs_household}}
+\code{\link[datatools]{gs_household}} for a detailed classification in 16 subgroups.
 }

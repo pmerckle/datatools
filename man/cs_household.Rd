@@ -15,8 +15,33 @@ cs_household(csind1, csind2)
 Computes the detailed socio-economic class of a household from the individual socio-economic classes of its members
 }
 \details{
-# Création de la variable csmenage à un chiffre romain et une lettre, à partir des 2 variables individuelles csindiv à 2 chiffres de la personne de référence et du conjoint. Cette fonction est utilisée directement pour créer la PCS Ménage.
+The function computes the French detailed socio-economic class of a household by following the rules indicated in CNIS, 2019, p. 42 sq. The resulting classification distinguishes 7 groups (coded with latin numerals), and 16 subgroups with a distinction between homogamous and heterogamous households (coded with arabic numerals):\tabular{ll}{
+   Code \tab Category \cr
+   I \tab Ménages à dominante cadre \cr
+   I-A \tab Cadre avec cadre \cr
+   I-B \tab Cadre avec profession intermédiaire \cr
+   II \tab Ménages à dominante intermédiaire ou cadre \cr
+   II-A \tab Cadre avec employé ou ouvrier \cr
+   II-B \tab Cadre avec inactif ou sans conjoint \cr
+   II-C \tab Profession intermédiaire ou cadre avec petit indépendant \cr
+   II-D \tab Profession intermédiaire avec profession intermédiaire \cr
+   III \tab Ménages à dominante employée ou intermédiaire \cr
+   III-A \tab Profession intermédiaire avec employé ou ouvrier \cr
+   III-B \tab Profession intermédiaire avec inactif ou sans conjoint \cr
+   III-C \tab Employé avec employé \cr
+   IV \tab Ménages à dominante petit indépendant \cr
+   IV-A \tab Petit indépendant avec petit indépendant, avec inactif ou sans conjoint \cr
+   IV-B \tab Petit indépendant avec employé ou ouvrier \cr
+   V \tab Ménages à dominante ouvrière \cr
+   V-A \tab Ouvrier avec employé \cr
+   V-B \tab Ouvrier avec ouvrier \cr
+   VI \tab Ménages mono-actifs d’employé ou d’ouvrier \cr
+   VI-A \tab Employé avec inactif ou sans conjoint \cr
+   VI-B \tab Ouvrier avec inactif ou sans conjoint \cr
+   VII \tab Ménages inactifs \cr
+   VII-A \tab Inactif avec inactif ou sans conjoint \cr
+}
 }
 \seealso{
-\code{\link[datatools]{gs_household}}
+\code{\link[datatools]{gs_household}} for a synthetic classification in only 7 groups.
 }
