@@ -57,7 +57,7 @@ unaccent("Jérémie")
 
 # pcs
 cs_household("35", "64")
-
+gs_household("35", "64")
 
 # Help pages
 ?datatools
