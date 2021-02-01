@@ -175,10 +175,10 @@ cs_household <- function(csind1, csind2) {
 gs_household <- function(csind1, csind2) {
   gsind1 <- csind_to_gsind(csind1)
   gsind2 <- csind_to_gsind(csind2)
-  res <- gsind_to_cshousehold(gsind1, gsind2)
+  res <- gsind_to_cshouse(gsind1, gsind2)
   res <- gsub(pattern = "-[ABC]", replacement = "", res)
   res <- gsub(pattern = "-[ABC]", replacement = "", res)
-  return(gsmenage)
+  return(res)
 }
 
 

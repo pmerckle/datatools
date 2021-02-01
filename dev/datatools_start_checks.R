@@ -14,17 +14,14 @@ library(roxygen2)
 # has_devel() # Doit retourner TRUE ou "Your system is ready to build packages" si l'installation est correcte.
 
 
-
 # Test package ----
 
+# Document and build
+document() # Creates help pages and updates NAMESPACE
 
 # Check package
 check()
 rm(list = c("fn_fr", "fn_or", "gender", "n", "unaccent"))
-
-
-# Document and build
-document() # Creates help pages and updates NAMESPACE
 
 # Download online version
 devtools::install_github("pmerckle/datatools")
@@ -58,6 +55,9 @@ unaccent("Jérémie")
 # pcs
 cs_household("35", "64")
 gs_household("35", "64")
+
+gs_household
+
 
 # Help pages
 ?datatools
