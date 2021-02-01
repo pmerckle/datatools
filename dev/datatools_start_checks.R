@@ -76,7 +76,6 @@ load("data-raw/fn_fr.RData")
 temp <- table(fn_fr$year, fn_fr$sex)
 
 devtools::install_github("pmerckle/datatools", force = TRUE)
-
 library(datatools)
 
 ?cs_household
@@ -85,4 +84,4 @@ cs_household("32", "61")
 ?gs_household
 gs_household(55, 12)
 
-install.packages("glue")
+install.packages("tibble")

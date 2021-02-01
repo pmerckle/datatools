@@ -21,11 +21,11 @@
 csind_to_gsind <- function(csind) {
   csind <- as.character(csind)
   gsind <- NA
-  gsind[csind %in% c("23", "31", "32", "33", "34", "35", "36", "37", "38", "74")] <- "1"
-  gsind[csind %in% c("41", "42", "43", "44", "45", "46", "47", "48", "73", "75")] <- "2"
+  gsind[csind %in% c("23", "3", "30", "31", "32", "33", "34", "35", "36", "37", "38", "74")] <- "1"
+  gsind[csind %in% c("4", "40", "41", "42", "43", "44", "45", "46", "47", "48", "73", "75")] <- "2"
   gsind[(substr(csind, 1 , 1) %in% c("1", "2") | csind %in% c("71", "72")) & csind != "23"] <- "3"
-  gsind[csind %in% c("51", "52", "53", "54", "55", "56", "77")] <- "4"
-  gsind[csind %in% c("61", "62", "63", "64", "65", "66", "67", "68", "69", "76", "78")] <- "5"
+  gsind[csind %in% c("5", "50", "51", "52", "53", "54", "55", "56", "77")] <- "4"
+  gsind[csind %in% c("6", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "76", "78")] <- "5"
   gsind[is.na(gsind)] <- "6"
   return(gsind)
 }
@@ -130,6 +130,8 @@ gsind_to_cshouse <- function(gsind1, gsind2) {
 #' Note1: the "Ménages inactifs" category (VII) excludes retirees who have worked but includes the unemployed who have never worked; the "cadre" category refers in this classification to the group of managers and senior professionals and, for the working population, to the category of managers of enterprises with more than 10 employees. The retired inactive persons are classified with the "petits indépendants", i.e. farmers, craftsmen and tradesmen).
 #' Note2: the function allows coding from the detailed as well as from the intermediate CS classification. The latter includes codes 10, 32, 36, 41, 51, 61, 66, 73, 76, 81 and 82, instead of the corresponding detailed categories.
 #' @seealso \code{\link[datatools]{gs_household}} for a synthetic classification in only 7 groups.
+#' @example
+#' cs_household("32", "61")
 #' @export
 
 cs_household <- function(csind1, csind2) {
@@ -164,12 +166,16 @@ cs_household <- function(csind1, csind2) {
 #' Note1: the "Ménages inactifs" category (VII) excludes retirees who have worked but includes the unemployed who have never worked; the "cadre" category refers in this classification to the group of managers and senior professionals and, for the working population, to the category of managers of enterprises with more than 10 employees. The retired inactive persons are classified with the "petits indépendants", i.e. farmers, craftsmen and tradesmen).
 #' Note2: the function allows coding from the detailed as well as from the intermediate CS classification. The latter includes codes 10, 32, 36, 41, 51, 61, 66, 73, 76, 81 and 82, instead of the corresponding detailed categories.
 #' @seealso \code{\link[datatools]{gs_household}} for a detailed classification in 16 subgroups.
+#' @example
+#' gs_household(55, 12)
 #' @export
 
+# csind1 <- 33
+# csind2 <- 33
 gs_household <- function(csind1, csind2) {
-  gsind1<- csind_to_gsind(csind1)
-  gsind2<- csind_to_gsind(csind2)
-  res <- gsind_to_cshouse(gsind1, gsind2)
+  gsind1 <- csind_to_gsind(csind1)
+  gsind2 <- csind_to_gsind(csind2)
+  res <- gsind_to_cshousehold(gsind1, gsind2)
   res <- gsub(pattern = "-[ABC]", replacement = "", res)
   res <- gsub(pattern = "-[ABC]", replacement = "", res)
   return(gsmenage)
