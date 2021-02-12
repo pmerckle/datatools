@@ -7,6 +7,8 @@
 year(firstname, year_min = 1946, year_max = 2017)
 }
 \arguments{
+\item{firstname}{first name as a character string.}
+
 \item{year_min}{starting year of the period over which the prediction is computed.}
 
 \item{year_max}{ending year of the period over which the prediction is computed.}

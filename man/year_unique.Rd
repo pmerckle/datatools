@@ -4,10 +4,10 @@
 \alias{year_unique}
 \title{Predict year from first name}
 \usage{
-year_unique(first_name, year_min = 1946, year_max = 2017)
+year_unique(firstname, year_min = 1946, year_max = 2017)
 }
 \arguments{
-\item{first_name}{first name as a character string.}
+\item{firstname}{first name as a character string.}
 
 \item{year_min}{starting year of the period over which the prediction is computed.}
 
