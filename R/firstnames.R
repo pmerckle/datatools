@@ -44,8 +44,10 @@ gender_unique <- function(firstname, year_min = 1900, year_max = 2017, freq = FA
     mutate(pourcentage = nb / sum(nb) * 100) %>%
     filter(pourcentage > 50)
   if(freq) res <- ifelse(temp$sex == 1, temp$pourcentage/100, 1-temp$pourcentage/100) else res <- ifelse(temp$sex == 1, "male", "female")
+  if(length(res) == 0) res <- NA
   return(res)
 }
+
 
 # gender ----
 
@@ -66,7 +68,8 @@ gender_unique <- function(firstname, year_min = 1900, year_max = 2017, freq = FA
 #' gender(c("Baptiste", "Henriette"))
 #' @export
 
-gender <- function(firstname, year_min = 1900, year_max = 2017, freq = FALSE) as.vector(sapply(firstname, gender_unique, year_min = year_min, year_max = year_max, freq = freq))
+gender <- function(firstname, year_min = 1900, year_max = 2017, freq = FALSE) sapply(firstname, gender_unique, year_min = year_min, year_max = year_max, freq = freq) %>% as.vector %>% unlist
+
 
 # is_male ----
 
@@ -84,6 +87,7 @@ gender <- function(firstname, year_min = 1900, year_max = 2017, freq = FALSE) as
 #' @export
 
 is_male <- function(firstname, year_min = 1900, year_max = 2017) gender(firstname, year_min = year_min, year_max = year_max) == "male"
+
 
 # is_female ----
 

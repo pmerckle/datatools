@@ -16,6 +16,3 @@ csind_to_gsind(csind)
 Création de la variable de regroupement gsind à un chiffre à partir de la variables cs à deux chiffres, par la fusion des GS individuels 1 et 2 et le déplacement de la CS 23.
 Attention : la fonction permet de coder à partir de la CS détaillée, ainsi qu'à partir de la CS de niveau intermédiaire. Cette dernière comporte les codes  10, 32, 36, 41, 51, 61, 66, 73, 76, 81 et 82, à la place des catégories détaillées correspondantes.
 }
-\seealso{
-\code{\link[datatools]{gsind_to_household}}, \code{\link[datatools]{cs_household}} \code{\link[datatools]{gs_household}}
-}

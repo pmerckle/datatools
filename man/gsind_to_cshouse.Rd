@@ -17,6 +17,3 @@ gsind_to_cshouse(gsind1, gsind2)
 \details{
 Cette fonction n'est pas utilisée directement, elle est mobilisée dans les fonctions cs_household() et gs_household()
 }
-\seealso{
-\code{\link[datatools]{gsind_to_house}}, \code{\link[datatools]{cs_household}} \code{\link[datatools]{gs_household}}
-}
