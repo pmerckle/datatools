@@ -3,3 +3,6 @@ inst/doc
 .Rhistory
 .Rproj
 ^.RData
+
+^Gender.R
+^data_total_2020.RData
