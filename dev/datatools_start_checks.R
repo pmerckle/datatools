@@ -13,11 +13,10 @@ library(devtools)
 library(roxygen2)
 # has_devel() # Doit retourner TRUE ou "Your system is ready to build packages" si l'installation est correcte.
 
-
 # Test package ----
 
 # Document and build
-document() # Creates help pages and updates NAMESPACE
+document(setwd("~/Dropbox/Data/datatools")) # Creates help pages and updates NAMESPACE
 
 # Check package
 check()
@@ -34,7 +33,7 @@ library(datatools)
 # firstnames
 gender("Henry")
 gender(c("Patrick", "Michelle"))
-gender("Armando")
+gender("Ana Lisa")
 gender(c("Jacques", "Bernadette", "Nicolas", "Carla", "François", "Julie", "Emmanuel", "Brigitte"))
 gender("Camille", year_max = 1950)
 gender("Camille", year_min = 1950)

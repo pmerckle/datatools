@@ -45,10 +45,6 @@ gender_unique <- function(first_name, year_min = 1900, year_max = 2017, freq = F
   return(res)
 }
 
-
-gender_unique("ANA LISA")
-
-
 # gender ----
 
 #' Predict genders from first names
