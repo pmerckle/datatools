@@ -32,7 +32,11 @@
 #' @export
 
 gender_unique <- function(first_name, year_min = 1900, year_max = 2017, freq = FALSE) {
-  temp <- fn_fr %>% filter(fn == toupper(unaccent(first_name)) & year >= year_min & year <= year_max) %>%
+  test <- first_name %>%
+    str_remove(" .*$") %>%
+    toupper %>%
+    unaccent
+  temp <- fn_fr %>% filter(fn == test & year >= year_min & year <= year_max) %>%
     group_by(fn, sex) %>%
     summarise(nb =sum(count)) %>%
     mutate(pourcentage = nb / sum(nb) * 100) %>%
@@ -40,6 +44,9 @@ gender_unique <- function(first_name, year_min = 1900, year_max = 2017, freq = F
   if(freq) res <- ifelse(temp$sex == 1, temp$pourcentage/100, 1-temp$pourcentage/100) else res <- ifelse(temp$sex == 1, "male", "female")
   return(res)
 }
+
+
+gender_unique("ANA LISA")
 
 
 # gender ----

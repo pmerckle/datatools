@@ -23,10 +23,11 @@ document() # Creates help pages and updates NAMESPACE
 check()
 rm(list = c("fn_fr", "fn_or", "gender", "n", "unaccent"))
 
+
+
 # Download online version
 devtools::install_github("pmerckle/datatools")
 library(datatools)
-
 
 # Test functions
 
@@ -40,6 +41,7 @@ gender("Camille", year_min = 1950)
 is_female("Martin")
 is_female("Marcelle")
 is_male("Zorglub")
+is_female("Zorglub")
 year("Théo")
 year(c("Anouk", "Lilia"))
 year("Nathalie")
