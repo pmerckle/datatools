@@ -24,6 +24,8 @@ library(devtools)
 install_github("pmerckle/datatools", force = TRUE)
 library(datatools)
 
+# gender_unique
+
 
 # > Usages simples ----
 
