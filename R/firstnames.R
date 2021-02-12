@@ -33,7 +33,9 @@
 
 gender_unique <- function(firstname, year_min = 1900, year_max = 2017, freq = FALSE) {
   test <- firstname %>%
+    str_remove(",") %>%
     str_remove(" .*$") %>%
+    str_remove("-.*$") %>%
     toupper %>%
     unaccent
   temp <- fn_fr %>% filter(fn == test & year >= year_min & year <= year_max) %>%
