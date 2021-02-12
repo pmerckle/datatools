@@ -15,7 +15,7 @@
 #'
 #' This function predicts the gender of a first name.
 #'
-#' @param first_name first name as a character string.
+#' @param firstname first name as a character string.
 #' @param year_min starting year of the period over which the prediction is computed.
 #' @param year_max ending year of the period over which the prediction is computed.
 #' @param freq return the probability of the first name being male
@@ -31,8 +31,8 @@
 #' @import magrittr
 #' @export
 
-gender_unique <- function(first_name, year_min = 1900, year_max = 2017, freq = FALSE) {
-  test <- first_name %>%
+gender_unique <- function(firstname, year_min = 1900, year_max = 2017, freq = FALSE) {
+  test <- firstname %>%
     str_remove(" .*$") %>%
     toupper %>%
     unaccent
@@ -117,7 +117,7 @@ is_female <- function(firstname, year_min = 1900, year_max = 2017) gender(firstn
 #'
 #' This function predicts the year of birth from a first name.
 #'
-#' @param first_name first name as a character string.
+#' @param firstname first name as a character string.
 #' @param year_min starting year of the period over which the prediction is computed.
 #' @param year_max ending year of the period over which the prediction is computed.
 #' @return
@@ -128,7 +128,7 @@ is_female <- function(firstname, year_min = 1900, year_max = 2017) gender(firstn
 #' @import dplyr
 #' @import magrittr
 
-year_unique <- function(first_name, year_min = 1946, year_max = 2017) {
+year_unique <- function(firstname, year_min = 1946, year_max = 2017) {
   temp <- fn_fr %>% filter(fn == toupper(unaccent(first_name)) & year >= year_min & year <= year_max) %>%
     group_by(firstname, year) %>%
     summarise(nb =sum(count)) %>%
