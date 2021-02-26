@@ -1,4 +1,4 @@
-# La fonction gender() : un test rapide Man vs Machine
+# La fonction gender() : un test rapide Human vs Machine
 # Vendredi Quanti, 12/02/2021
 
 
@@ -18,21 +18,18 @@ install_library("knitr")
 install_library("kableExtra")
 
 
-# Package datatools
+# Package datatools ----
 
 library(devtools)
 install_github("pmerckle/datatools", force = TRUE)
 library(datatools)
 
-# gender_unique
 
-
-# > Usages simples ----
+# Usages simples ----
 
 gender("Henry")
 gender("Paul-Marie")
 gender("Ana Lisa")
-gender("Jérôme")
 
 gender(c("Jacques", "Bernadette", "Nicolas", "Carla", "François", "Julie", "Emmanuel", "Brigitte"))
 
@@ -47,9 +44,9 @@ is_male("Camille", year_max = 1950)
 is_male("Zorglub")
 
 
-# > Données ----
+# Human vs Machine ----
 
-# > Importer les deux fichiers de qualification
+# Importer les deux fichiers de qualification
 load("data_total_2020.RData")
 df <- data_total
 # load("data_total_2021.RData")
@@ -61,11 +58,13 @@ df <- df %>%
   select(
     Prénom,
     Corps,
+    Discipline.1,
     Date.de.naissance,
     Sexe.1,
     Avis.1
   ) %>%
-  rename(sexe = Sexe.1)
+  rename(Human = Sexe.1)
+df$Prénom <- iconv(df$Prénom, to="ASCII//TRANSLIT//IGNORE")
 
 # gender()
 debut <- Sys.time()
@@ -74,44 +73,48 @@ fin <- Sys.time()
 vitesse <- length(temp) / as.numeric(fin - debut)
 print(paste(round(vitesse), "prénoms par seconde"))
 
-df$gender <- temp
-df$gender[df$gender == "female"] <- "FEMME"
-df$gender[df$gender == "male"] <- "HOMME"
-df$gender[df$gender == "logical(0)"] <- NA
-# Réordonnancement de df$gender
-df$gender <- factor(df$gender,
+df$Machine <- temp
+df$Machine[df$Machine == "female"] <- "FEMME"
+df$Machine[df$Machine == "male"] <- "HOMME"
+df$Machine[df$Machine == "logical(0)"] <- NA
+# Réordonnancement de df$Machine
+df$Machine <- factor(df$Machine,
   levels = c("FEMME", "HOMME")
 )
 
 # Croisement
-table(df$sexe, df$gender, useNA = "always") %>% addmargins
+table(df$Human, df$Machine, useNA = "always") %>% addmargins %>% kable %>% kable_classic
 
 # Codés différemment
-df %>% filter(sexe != gender) %>%
-  select(Prénom, sexe, gender) %>%
-  kable(caption = "Prénoms non-codés par l'humain") %>%
+df %>% filter(Human != Machine) %>%
+  select(Prénom, Human, Machine) %>%
+  kable(caption = "Prénoms codés différemment") %>%
   kable_classic
 
 # Non-codés par l'humain
-df %>% filter(is.na(sexe)) %>%
-  select(Prénom, sexe, gender) %>%
-  kable(caption = "Prénoms codés différemment par l'humain et par la fonction") %>%
+df %>% filter(is.na(Human)) %>%
+  select(Prénom, Human, Machine) %>%
+  kable(caption = "Prénoms non-codés par l'être humain") %>%
   kable_classic
 
 # Non-codés par la fonction
-df %>% filter(is.na(gender)) %>%
-  select(Prénom, sexe) %>%
-  kable(caption = "Prénoms non-codés par la fonction gender()") %>%
+df %>% filter(is.na(Machine)) %>%
+  select(Prénom, Human, Machine) %>%
+  kable(caption = "Prénoms non-codés par la machine") %>%
   kable_classic
 
-# Tableau croisé sexe avec la durée
-tableau <- table(df$Avis.1, df$sexe)
-tableau %>% cprop
+# Tableau croisé sexe avec l'avis
+tableau <- table(df$Avis.1, df$Human)
+tableau %>% cprop %>% round(1) %>%
+  kable(caption = "Avis en fonction du sexe codé par l'être humain") %>%
+  kable_classic
 chisq.test(tableau)
 
-# Tableau croisé gender avec la durée
-tableau <- table(df$Avis.1, df$gender)
-tableau %>% cprop
+# Tableau croisé gender avec l'avis
+tableau <- table(df$Avis.1, df$Machine)
+tableau %>% cprop %>% round(1) %>%
+  kable(caption = "Avis en fonction du sexe codé par la machine") %>%
+  kable_classic
 chisq.test(tableau)
 
-```
+
