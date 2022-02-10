@@ -33,7 +33,7 @@
 chisq.stars <- function(x, y = NULL, correct = TRUE, p = rep(1/length(x), length(x)), rescale.p = FALSE, simulate.p.value = FALSE, B = 2000) {
   res <- chisq.test(x, y, correct, p, rescale.p, simulate.p.value, B)$p.value
   res <- cut(res, breaks=c(0, 0.001, 0.01, 0.05, 1), include.lowest=TRUE, labels=c("***", "**", "*", "(ns)"))
-  res(as.character(res))
+  res <- as.character(res)
   return(res)
 }
 
@@ -61,6 +61,6 @@ chisq.stars <- function(x, y = NULL, correct = TRUE, p = rep(1/length(x), length
 cramer.v.stars <- function(tab) {
   res <- cramer.v(tab)
   res <- cut(res, breaks=c(0, 0.05, 0.015, 0.03, 1), include.lowest=TRUE, labels=c("", "*", "**", "***"))
-  res(as.character(res))
+  res <- as.character(res)
   return(res)
 }
