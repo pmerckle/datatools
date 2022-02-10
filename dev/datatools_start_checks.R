@@ -81,10 +81,8 @@ library(datatools)
 
 library(rmarkdown)
 
-data("mtcars")
-saveRDS(mtcars, "mtcars.rds")
-datatools::codebook("mtcars.rds")
-
+data("hdv2003")
+datatools::codebook(hdv2003, main = "Histoires de vie 2003", sub = "Dictionnaire des variables")
 
 
 

@@ -23,24 +23,33 @@ toc: true
 toc_depth: 2
 theme: united
 params:
-    data: "vico2022.rds"
-    weights : "POIDS_init"
-    main: "Vico 2022"
-    sub: "Dictionnaire des variables" 
-    print_table: TRUE
+    df: !r data(mtcars); mtcars
+    name: mtcars
+    weights : NA
+    main: "mtcars"
+    sub: "Codebook" 
+    print_table: FALSE
 ---
 
 ```{r setup, warning = FALSE, echo = FALSE, include = FALSE, results = "asis"}
 
+# > Options ----
 
-# > Paramètres ----
+knitr::opts_chunk$set(echo=FALSE, results='asis', warning=FALSE, fig.align="center")
+options(OutDec = ",") # Pour la virgule en séparateur de décimales
 
-data <- readRDS(params$data)
+# > Parameters ----
+
+data <- params$df
+name <- params$name
 weights <- params$weights
 main <- params$main
 sub <- params$sub
 print_table <- params$print_table
 
+```
+
+```{r}
 
 # > Packages ----
 
@@ -55,19 +64,14 @@ install_library("kableExtra") # pour la fonction kable_styling()
 install_library("tidyverse") # pour le pipe entre autres
 install_library("sjlabelled") # pour la fonction unlabel()
 
+```
 
-# > Options ----
-
-knitr::opts_chunk$set(echo=FALSE, results='asis', warning=FALSE, fig.align="center")
-options(OutDec = ",") # Pour la virgule en séparateur de décimales
-
+```{r}
 
 # > Fonctions ----
 
 # codebook_source : la fonction qui génère les présentations de chaque variable du data frame
-# x = "SEXE" / data = df / weights = NA
 codebook_source <- function(data = data, weights = weights, print_table = TRUE) {
-  print(nrow(data))
   if(!is.na(weights)) weights <- data[, weights] %>% as.numeric
   if(is.na(weights)) weights <- rep(1, nrow(data))
   if(sum(weights == 0)) weights <- rep(1, nrow(data))
@@ -76,7 +80,9 @@ codebook_source <- function(data = data, weights = weights, print_table = TRUE) 
     description <- paste0("*", attributes(data)$variable.labels[which(names(data) == x)], "*")
     if(description !="**" & description !="*NA*") cat("  \n", description, " ")
     cat("  \n  ")
-    cat(paste0("  \nChamp : ", ifelse(is.na(attributes(data)$variable.filters[which(names(data) == x)]), "Tous les répondants", attributes(data)$variable.filters[which(names(data) == x)]), "."))
+    # champ <- ifelse(is.na(attributes(data)$variable.filters[which(names(data) == x)]), "Tous les répondants", attributes(data)$variable.filters[which(names(data) == x)])
+    # champ <- ifelse(champ == "" | is.na(champ), "Tous les répondants", champ)
+    # cat(paste0("  \nChamp : ", champ, "...", nchar(champ)))
     type <- class(data[, x])[class(data[, x]) != "labelled"] %>%
       str_replace_all(c(
         "integer" = "numérique entier",
@@ -186,7 +192,7 @@ abstract : "Ce document présente le dictionnaire des variables du fichier `r da
 
 # Caractéristiques générales du fichier
 
-* Nom : `r params$data`
+* Nom : `r name`
 * Nombre de lignes : `r nrow(data)` observations
 * Nombre de colonnes : `r ncol(data)` variables
 
@@ -203,11 +209,9 @@ tableau$Type <- tableau$Type %>% fct_recode(
   "Dichotomique (logical)" = "logical",
   "Texte (character)" = "character"
 )
-cat(kable(tableau) %>% kable_styling(bootstrap_options = "condensed", latex_options = c("striped", "hold_position"), full_width = T))
+cat(kable(tableau, format = "latex") %>% kable_styling(bootstrap_options = "condensed", latex_options = c("striped", "hold_position"), full_width = T))
 
 ```
-
-
 
 \pagebreak
 

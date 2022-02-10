@@ -15,7 +15,7 @@
 #'
 #' This function builds PDF codebooks from data frames.
 #'
-#' @param file Input data file in RDS format
+#' @param df A data frame
 #' @return A PDF file stored in the working directory.
 #' @examples
 #' data(mtcars)
@@ -26,12 +26,13 @@
 #' @export
 
 # file <- "mtcars.rds"
-codebook <- function(file, weights = NA, main = "Codebook", sub = deparse(substitute(file)), print_table = TRUE) {
-  file <- system.file("templete.Rmd", package = 'datatools')
-  print(file)
-  render(file,
-         output_file = paste0(str_remove(file, "\\.rds$"), ".pdf"),
-         params = list(data = data, weights = weights, main = main, sub = sub, print_table = print_table)
+codebook <- function(df, path = getwd(), weights = NA, main = deparse(substitute(file)), sub = "Codebook", print_table = TRUE) {
+  name <- deparse(substitute(df))
+  output <- paste0(path, "/", name, ".pdf")
+  print(output)
+  render(system.file("rmd", "codebook_source.Rmd", package = 'datatools'),
+         output_file = output,
+         params = list(df = df, name = name, weights = weights, main = main, sub = sub, print_table = print_table)
   )
 }
 
