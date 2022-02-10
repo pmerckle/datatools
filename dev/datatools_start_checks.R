@@ -12,6 +12,7 @@
 library(devtools)
 library(roxygen2)
 # has_devel() # Doit retourner TRUE ou "Your system is ready to build packages" si l'installation est correcte.
+# has_devel() # Doit retourner TRUE ou "Your system is ready to build packages" si l'installation est correcte.
 
 # Test package ----
 
@@ -78,9 +79,13 @@ data(hdv2003)
 devtools::install_github("pmerckle/datatools", force = TRUE)
 library(datatools)
 
-tableau <- table(hdv2003$sexe, hdv2003$relig)
-chisq.test(tableau)
-chisq.stars(hdv2003$sexe, hdv2003$relig)
+library(rmarkdown)
+
+data("mtcars")
+saveRDS(mtcars, "mtcars.rds")
+datatools::codebook("mtcars.rds")
+
+
 
 
 # Old

@@ -1,0 +1,223 @@
+---
+output: pdf_document
+papersize: a4
+geometry: margin=2cm
+header-includes:
+  - \renewcommand{\contentsname}{Sommaire}
+  - \renewcommand{\abstract}{Objet :}
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage[table]{xcolor}
+toc: true
+toc_depth: 2
+theme: united
+params:
+    data: "vico2022.rds"
+    weights : "POIDS_init"
+    main: "Vico 2022"
+    sub: "Dictionnaire des variables" 
+    print_table: TRUE
+---
+
+```{r setup, warning = FALSE, echo = FALSE, include = FALSE, results = "asis"}
+
+
+# > Paramètres ----
+
+data <- readRDS(params$data)
+weights <- params$weights
+main <- params$main
+sub <- params$sub
+print_table <- params$print_table
+
+
+# > Packages ----
+
+# Package maison datatools, utilisé ici en particulier pour la fonction install_library()
+# devtools::install_github("pmerckle/datatools")
+library(datatools)
+
+# Chargement des packages utilisés dans les différents scripts sourcés
+install_library("questionr") # Je ne sais plus pourquoi mais on a toujours besoin du package questionr !
+install_library("knitr") # pour la fonction kable()
+install_library("kableExtra") # pour la fonction kable_styling()
+install_library("tidyverse") # pour le pipe entre autres
+install_library("sjlabelled") # pour la fonction unlabel()
+
+
+# > Options ----
+
+knitr::opts_chunk$set(echo=FALSE, results='asis', warning=FALSE, fig.align="center")
+options(OutDec = ",") # Pour la virgule en séparateur de décimales
+
+
+# > Fonctions ----
+
+# codebook_source : la fonction qui génère les présentations de chaque variable du data frame
+# x = "SEXE" / data = df / weights = NA
+codebook_source <- function(data = data, weights = weights, print_table = TRUE) {
+  print(nrow(data))
+  if(!is.na(weights)) weights <- data[, weights] %>% as.numeric
+  if(is.na(weights)) weights <- rep(1, nrow(data))
+  if(sum(weights == 0)) weights <- rep(1, nrow(data))
+  sortie <- lapply(names(data), function(x) {
+    cat(paste0("  \n## ", x))
+    description <- paste0("*", attributes(data)$variable.labels[which(names(data) == x)], "*")
+    if(description !="**" & description !="*NA*") cat("  \n", description, " ")
+    cat("  \n  ")
+    cat(paste0("  \nChamp : ", ifelse(is.na(attributes(data)$variable.filters[which(names(data) == x)]), "Tous les répondants", attributes(data)$variable.filters[which(names(data) == x)]), "."))
+    type <- class(data[, x])[class(data[, x]) != "labelled"] %>%
+      str_replace_all(c(
+        "integer" = "numérique entier",
+        "numeric" = "numérique",
+        "character" = "texte",
+        "factor" = "facteur (liste de modalités)"
+      ))
+    cat(paste0("  \nType : ", type))
+    cat(paste0("  \nValeurs manquantes : ", sum(is.na(data[, x])), " (", round(sum(is.na(data[, x]))/nrow(data)*100, digits = 1), "%)"))
+    cat(paste0("  \nMode : ", getmode(data[, x])))
+    cat(paste0("  \nNombre de valeurs différentes : ", length(unique(data[, x]))))
+    cat("  \n  ")
+    
+    # Type : numérique
+    if(type %in% c("numérique", "numérique entier")){
+      t <- as.matrix(round(summary(data[, x]), 2))
+      if(length(rownames(t)) == 6) rownames(t) <- c("Minimum", "Premier quartile", "Médiane", "Moyenne", "Troisième quartile", "Maximum") else rownames(t) <- c("Minimum", "Premier quartile", "Médiane", "Moyenne", "Troisième quartile", "Maximum", "Valeurs manquantes")
+      cat(
+        kable(t, format = "latex") %>%
+          kable_styling(bootstrap_options = "condensed", latex_options = c("striped", "hold_position"), full_width = T) %>%
+          row_spec(3, bold = TRUE)
+      )
+      cat("\\newline")
+    }
+    
+    # Type : texte ou facteur
+    if(type %in% c("texte", "facteur (liste de modalités)")) {
+      # Calculer le tableau complet
+      nashow <- ifelse(sum(is.na(data[, x]), na.rm = TRUE)>0, TRUE, FALSE)
+      tu <- freq(questionr::wtd.table(data[, x], weights = rep(1, nrow(data)), na.show = nashow), total = TRUE)
+      tw <- freq(questionr::wtd.table(data[, x], weights = weights, na.show = nashow), total = TRUE)
+      tw[, 1] <- round(tw[, 1])
+      t <- cbind(1:nrow(tu), substr(rownames(tu), 1, 200), tu, tw)
+      names(t)[1:2] <- ""
+      rownames(t) <- 1:nrow(t)
+      t[, 2] <- as.character(t[, 2])
+      t[t[, 2] == "Total", 1] <- ""
+      t[t[, 2] == "NA", 1] <- "NA"
+      t[t[, 2] == "NA", 2] <- "N'a pas répondu"
+      
+      # Afficher les données
+      if(print_table) {
+        # Ne pas afficher si trop de modalités
+        if(nrow(t)>21){
+          # Afficher seulement la liste des 5 premières valeurs
+          cat("  \n*Nombre élevé de valeurs distinctes : seules les 5 valeurs distinctes les plus fréquentes sont indiquées pour information.*")
+          t <- t[order(t[, 3], decreasing = TRUE), ]
+          t <- t[!(t[, 2] %in% c("", "Total", "N'a pas répondu")), ]
+          t <- t[1:5, ]
+          cat(paste0("  \nValeurs les plus fréquentes : ", paste0("*", t[, 2], "* (", t[, 3], ifelse(t[, 3]>1, " occurrences)", " occurrence)"), collapse = " ; "), ".  "))
+        }
+        # Afficher si pas trop de modalités
+        else{
+          # Compléter la table
+          t[is.na(t)] <- "-"
+          # Afficher la table complète
+          cat(
+            kable(t, format = "latex", longtable = TRUE, booktabs = TRUE, align = c("l", "l", rep("r", 6))) %>% 
+              kable_styling(bootstrap_options = "condensed", latex_options = c("striped", "hold_position"), full_width = F) %>%
+              row_spec(which(t[, 2] == getmode(data[, x])), bold = TRUE) %>% # Mettre en gras le mode
+              column_spec(1, width = "0.3cm") %>%
+              column_spec(2, width = "6.3cm") %>%
+              column_spec(3:8, width = "1cm") %>%
+              add_header_above(c(" " = 2, "Bruts" = 3, "Pondérés" = 3))
+          )
+        }
+      }
+      
+      # Ne pas afficher les données si print_table = FALSE
+      if(!print_table) {
+        # Ne pas afficher si trop de modalités
+        if(nrow(t)>21){
+        }
+        # Afficher si pas trop de modalités
+        else{
+          t <- t[-nrow(t), 1:2]
+          names(t) <- ""
+          cat(
+            kable(t[, 1:2], format = "latex", longtable = TRUE, booktabs = TRUE, align = "l", col.names = NULL) %>% 
+              kable_styling(bootstrap_options = "condensed", latex_options = c("striped", "hold_position"), full_width = F) %>%
+              column_spec(1, width = "0.3cm") %>%
+              column_spec(2, width = "15.5cm")
+          )
+        }
+      }
+      cat("  \n  ")
+    }
+  })
+}
+
+# Fonction getmode() pour déterminer le mode d'une distribution
+getmode <- function(x) {
+  uniqx <- unique(x)
+  uniqx[which.max(tabulate(match(x, uniqx)))]
+}
+
+```
+
+---
+title: "`r main`"
+subtitle: "`r sub`"
+date: "`r format(Sys.time(), 'Version générée le %A %e %B %Y à %Hh%M')`."
+abstract : "Ce document présente le dictionnaire des variables du fichier `r data`."
+---
+
+\pagebreak
+
+# Caractéristiques générales du fichier
+
+* Nom : `r params$data`
+* Nombre de lignes : `r nrow(data)` observations
+* Nombre de colonnes : `r ncol(data)` variables
+
+# Types de variables
+
+```{r}
+
+tableau <- data %>% lapply(unlabel) %>% sapply(class) %>% table %>% as.data.frame
+names(tableau) <- c("Type", "Nombre")
+tableau$Type <- tableau$Type %>% fct_recode(
+  "Facteur (factor)" = "factor",
+  "Numérique entier (integer)" = "integer",
+  "Numérique (numeric)" = "numeric",
+  "Dichotomique (logical)" = "logical",
+  "Texte (character)" = "character"
+)
+cat(kable(tableau) %>% kable_styling(bootstrap_options = "condensed", latex_options = c("striped", "hold_position"), full_width = T))
+
+```
+
+
+
+\pagebreak
+
+# Variables
+
+```{r dico, warning = FALSE, message = FALSE, include = TRUE, echo = FALSE, results = "asis"}
+
+# Générer le dictionnaire des variables
+codebook_source(data = data, weights = weights, print_table = print_table)
+
+```
+
+
