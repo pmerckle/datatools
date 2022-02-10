@@ -19,8 +19,7 @@
 #' @return A PDF file stored in the working directory.
 #' @examples
 #' data(mtcars)
-#' saveRDS(mtcars, "mtcars.rds")
-#' codebook("mtcars.rds")
+#' codebook(mtcars)
 #' @import magrittr
 #' @import rmarkdown
 #' @export

@@ -31,6 +31,12 @@ library(datatools)
 
 # Test functions
 
+# codebook
+library(questionr)
+data("hdv2003")
+codebook(hdv2003, main = "Histoires de vie 2003", sub = "Dictionnaire des variables")
+
+
 # firstnames
 gender("Henry")
 gender(c("Patrick", "Michelle"))
@@ -46,7 +52,9 @@ year("Théo")
 year(c("Anouk", "Lilia"))
 year("Nathalie")
 
-# misc
+# pcs
+cs_household("35", "64")
+gs_household("35", "64")
 
 # soundex
 soundex("Berlin")
@@ -54,9 +62,6 @@ soundex("Berlin")
 # str
 unaccent("Jérémie")
 
-# pcs
-cs_household("35", "64")
-gs_household("35", "64")
 
 
 
@@ -72,18 +77,6 @@ gs_household("35", "64")
 # SANDBOX ----
 
 # Test chisq.stars() modifications
-
-library(questionr)
-data(hdv2003)
-
-devtools::install_github("pmerckle/datatools", force = TRUE)
-library(datatools)
-
-library(rmarkdown)
-
-data("hdv2003")
-datatools::codebook(hdv2003, main = "Histoires de vie 2003", sub = "Dictionnaire des variables")
-
 
 
 # Old

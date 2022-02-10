@@ -1,0 +1,513 @@
+\documentclass[a4paper,]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=2cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={file},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{file}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \subtitle{Codebook}
+  \author{}
+    \preauthor{}\postauthor{}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{Version générée le jeudi 10 février 2022 à 21h59.}
+
+\renewcommand{\contentsname}{Sommaire}
+\renewcommand{\abstract}{Objet :}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage[table]{xcolor}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Ce document présente le dictionnaire des variables du fichier
+ext\{107\}, ext\{97\}, ext\{102\}, ext\{87\}, ext\{119\}, ext\{106\},
+ext\{110\}, ext\{106\}, ext\{107\}, ext\{134\}, ext\{147\}, ext\{180\},
+ext\{125\}, ext\{134\}, ext\{110\}, ext\{102\}, ext\{103\}, ext\{111\},
+ext\{120\}, ext\{129\}, ext\{122\}, ext\{183\}, ext\{169\}, ext\{190\},
+ext\{134\}, ext\{108\}, ext\{104\}, ext\{117\}, ext\{157\}, ext\{148\},
+ext\{130\}, ext\{140\}, ext\{136\}, ext\{140\}, ext\{187\}, ext\{150\},
+ext\{159\}, ext\{143\}, ext\{114\}, ext\{127\}, ext\{159\}, ext\{156\},
+ext\{138\}, ext\{120\}, ext\{117\}, ext\{170\}, ext\{168\}, ext\{198\},
+ext\{144\}, ext\{146\}, ext\{109\}, ext\{131\}, ext\{151\}, ext\{140\},
+ext\{153\}, ext\{140\}, ext\{161\}, ext\{168\}, ext\{152\}, ext\{136\},
+ext\{113\}, ext\{100\}, ext\{103\}, ext\{103\}, ext\{121\}, ext\{134\},
+ext\{133\}, ext\{129\}, ext\{144\}, ext\{154\}, ext\{156\}, ext\{163\},
+ext\{122\}, ext\{92\}, ext\{117\}, ext\{95\}, ext\{96\}, ext\{108\},
+ext\{108\}, ext\{106\}, ext\{140\}, ext\{114\}, ext\{158\}, ext\{161\},
+ext\{102\}, ext\{127\}, ext\{125\}, ext\{101\}, ext\{97\}, ext\{112\},
+ext\{112\}, ext\{113\}, ext\{108\}, ext\{128\}, ext\{154\}, ext\{162\},
+ext\{112\}, ext\{79\}, ext\{82\}, ext\{127\}, ext\{108\}, ext\{110\},
+ext\{123\}, ext\{103\}, ext\{97\}, ext\{140\}, ext\{165\}, ext\{183\},
+ext\{148\}, ext\{111\}, ext\{116\}, ext\{115\}, ext\{100\}, ext\{106\},
+ext\{134\}, ext\{125\}, ext\{117\}, ext\{122\}, ext\{153\}, ext\{178\},
+ext\{114\}, ext\{94\}, ext\{128\}, ext\{119\}, ext\{111\}, ext\{110\},
+ext\{114\}, ext\{118\}, ext\{115\}, ext\{132\}, ext\{153\}, ext\{171\},
+ext\{115\}, ext\{95\}, ext\{92\}, ext\{100\}, ext\{95\}, ext\{114\},
+ext\{102\}, ext\{104\}, ext\{132\}, ext\{136\}, ext\{117\}, ext\{137\},
+ext\{111\}, ext\{106\}, ext\{98\}, ext\{84\}, ext\{94\}, ext\{105\},
+ext\{123\}, ext\{109\}, ext\{130\}, ext\{153\}, ext\{134\}, ext\{99\},
+ext\{115\}, ext\{104\}, ext\{131\}, ext\{108\}, ext\{103\}, ext\{115\},
+ext\{122\}, ext\{122\}, ext\{125\}, ext\{137\}, ext\{138\}, ext\{152\},
+ext\{120\}, ext\{95\}, ext\{100\}, ext\{89\}, ext\{82\}, ext\{89\},
+ext\{60\}, ext\{84\}, ext\{113\}, ext\{126\}, ext\{122\}, ext\{118\},
+ext\{92\}, ext\{86\}, ext\{81\}, ext\{84\}, ext\{87\}, ext\{90\},
+ext\{79\}, ext\{96\}, ext\{122\}, ext\{120\}, ext\{137\}, ext\{154\},
+ext\{1687\}, ext\{1508\}, ext\{1507\}, ext\{1385\}, ext\{1632\},
+ext\{1511\}, ext\{1559\}, ext\{1630\}, ext\{1579\}, ext\{1653\},
+ext\{2152\}, ext\{2148\}, ext\{1752\}, ext\{1765\}, ext\{1717\},
+ext\{1558\}, ext\{1575\}, ext\{1520\}, ext\{1805\}, ext\{1800\},
+ext\{1719\}, ext\{2008\}, ext\{2242\}, ext\{2478\}, ext\{2030\},
+ext\{1655\}, ext\{1693\}, ext\{1623\}, ext\{1805\}, ext\{1746\},
+ext\{1795\}, ext\{1926\}, ext\{1619\}, ext\{1992\}, ext\{2233\},
+ext\{2192\}, ext\{2080\}, ext\{1768\}, ext\{1835\}, ext\{1569\},
+ext\{1976\}, ext\{1853\}, ext\{1965\}, ext\{1689\}, ext\{1778\},
+ext\{1976\}, ext\{2397\}, ext\{2654\}, ext\{2097\}, ext\{1963\},
+ext\{1677\}, ext\{1941\}, ext\{2003\}, ext\{1813\}, ext\{2012\},
+ext\{1912\}, ext\{2084\}, ext\{2080\}, ext\{2118\}, ext\{2150\},
+ext\{1608\}, ext\{1503\}, ext\{1548\}, ext\{1382\}, ext\{1731\},
+ext\{1798\}, ext\{1779\}, ext\{1887\}, ext\{2004\}, ext\{2077\},
+ext\{2092\}, ext\{2051\}, ext\{1577\}, ext\{1356\}, ext\{1652\},
+ext\{1382\}, ext\{1519\}, ext\{1421\}, ext\{1442\}, ext\{1543\},
+ext\{1656\}, ext\{1561\}, ext\{1905\}, ext\{2199\}, ext\{1473\},
+ext\{1655\}, ext\{1407\}, ext\{1395\}, ext\{1530\}, ext\{1309\},
+ext\{1526\}, ext\{1327\}, ext\{1627\}, ext\{1748\}, ext\{1958\},
+ext\{2274\}, ext\{1648\}, ext\{1401\}, ext\{1411\}, ext\{1403\},
+ext\{1394\}, ext\{1520\}, ext\{1528\}, ext\{1643\}, ext\{1515\},
+ext\{1685\}, ext\{2000\}, ext\{2215\}, ext\{1956\}, ext\{1462\},
+ext\{1563\}, ext\{1459\}, ext\{1446\}, ext\{1622\}, ext\{1657\},
+ext\{1638\}, ext\{1643\}, ext\{1683\}, ext\{2050\}, ext\{2262\},
+ext\{1813\}, ext\{1445\}, ext\{1762\}, ext\{1461\}, ext\{1556\},
+ext\{1431\}, ext\{1427\}, ext\{1554\}, ext\{1645\}, ext\{1653\},
+ext\{2016\}, ext\{2207\}, ext\{1665\}, ext\{1361\}, ext\{1506\},
+ext\{1360\}, ext\{1453\}, ext\{1522\}, ext\{1460\}, ext\{1552\},
+ext\{1548\}, ext\{1827\}, ext\{1737\}, ext\{1941\}, ext\{1474\},
+ext\{1458\}, ext\{1542\}, ext\{1404\}, ext\{1522\}, ext\{1385\},
+ext\{1641\}, ext\{1510\}, ext\{1681\}, ext\{1938\}, ext\{1868\},
+ext\{1726\}, ext\{1456\}, ext\{1445\}, ext\{1456\}, ext\{1365\},
+ext\{1487\}, ext\{1558\}, ext\{1488\}, ext\{1684\}, ext\{1594\},
+ext\{1850\}, ext\{1998\}, ext\{2079\}, ext\{1494\}, ext\{1057\},
+ext\{1218\}, ext\{1168\}, ext\{1236\}, ext\{1076\}, ext\{1174\},
+ext\{1139\}, ext\{1427\}, ext\{1487\}, ext\{1483\}, ext\{1513\},
+ext\{1357\}, ext\{1165\}, ext\{1282\}, ext\{1110\}, ext\{1297\},
+ext\{1185\}, ext\{1222\}, ext\{1284\}, ext\{1444\}, ext\{1575\},
+ext\{1737\}, ext\{1763\}, ext\{867\}, ext\{825\}, ext\{806\},
+ext\{814\}, ext\{991\}, ext\{945\}, ext\{1004\}, ext\{1091\},
+ext\{958\}, ext\{850\}, ext\{1109\}, ext\{1113\}, ext\{925\},
+ext\{903\}, ext\{1006\}, ext\{892\}, ext\{990\}, ext\{866\},
+ext\{1095\}, ext\{1204\}, ext\{1029\}, ext\{1147\}, ext\{1171\},
+ext\{1299\}, ext\{944\}, ext\{874\}, ext\{840\}, ext\{893\},
+ext\{1007\}, ext\{973\}, ext\{1097\}, ext\{1194\}, ext\{988\},
+ext\{1077\}, ext\{1045\}, ext\{1115\}, ext\{1005\}, ext\{857\},
+ext\{879\}, ext\{887\}, ext\{1075\}, ext\{1121\}, ext\{1190\},
+ext\{1058\}, ext\{939\}, ext\{1074\}, ext\{1089\}, ext\{1208\},
+ext\{903\}, ext\{916\}, ext\{787\}, ext\{1114\}, ext\{1014\},
+ext\{1022\}, ext\{1114\}, ext\{1132\}, ext\{1111\}, ext\{1008\},
+ext\{916\}, ext\{992\}, ext\{731\}, ext\{665\}, ext\{724\}, ext\{744\},
+ext\{910\}, ext\{883\}, ext\{900\}, ext\{1057\}, ext\{1076\},
+ext\{919\}, ext\{920\}, ext\{953\}, ext\{664\}, ext\{607\}, ext\{777\},
+ext\{633\}, ext\{791\}, ext\{790\}, ext\{803\}, ext\{884\}, ext\{769\},
+ext\{732\}, ext\{859\}, ext\{994\}, ext\{704\}, ext\{684\}, ext\{671\},
+ext\{643\}, ext\{771\}, ext\{644\}, ext\{828\}, ext\{748\}, ext\{767\},
+ext\{825\}, ext\{810\}, ext\{986\}, ext\{714\}, ext\{567\}, ext\{616\},
+ext\{678\}, ext\{742\}, ext\{840\}, ext\{888\}, ext\{852\}, ext\{774\},
+ext\{831\}, ext\{889\}, ext\{1046\}, ext\{889\}, ext\{626\}, ext\{808\},
+ext\{746\}, ext\{754\}, ext\{865\}, ext\{980\}, ext\{959\}, ext\{856\},
+ext\{798\}, ext\{942\}, ext\{1010\}, ext\{796\}, ext\{643\}, ext\{794\},
+ext\{750\}, ext\{809\}, ext\{716\}, ext\{851\}, ext\{931\}, ext\{834\},
+ext\{762\}, ext\{880\}, ext\{1077\}, ext\{748\}, ext\{593\}, ext\{720\},
+ext\{646\}, ext\{765\}, ext\{820\}, ext\{807\}, ext\{885\}, ext\{803\},
+ext\{860\}, ext\{825\}, ext\{911\}, ext\{704\}, ext\{691\}, ext\{688\},
+ext\{714\}, ext\{814\}, ext\{736\}, ext\{876\}, ext\{829\}, ext\{818\},
+ext\{942\}, ext\{782\}, ext\{823\}, ext\{595\}, ext\{673\}, ext\{660\},
+ext\{676\}, ext\{755\}, ext\{815\}, ext\{867\}, ext\{933\}, ext\{798\},
+ext\{950\}, ext\{825\}, ext\{911\}, ext\{619\}, ext\{426\}, ext\{475\},
+ext\{556\}, ext\{559\}, ext\{483\}, ext\{587\}, ext\{615\}, ext\{618\},
+ext\{662\}, ext\{519\}, ext\{585\}, ext\{483\}, ext\{434\}, ext\{513\},
+ext\{548\}, ext\{586\}, ext\{522\}, ext\{601\}, ext\{644\}, ext\{643\},
+ext\{641\}, ext\{711\}, ext\{721\}, ext\{269\}, ext\{265\}, ext\{319\},
+ext\{407\}, ext\{454\}, ext\{427\}, ext\{522\}, ext\{536\}, ext\{405\},
+ext\{437\}, ext\{434\}, ext\{437\}, ext\{316\}, ext\{311\}, ext\{351\},
+ext\{362\}, ext\{486\}, ext\{429\}, ext\{551\}, ext\{646\}, ext\{456\},
+ext\{475\}, ext\{456\}, ext\{468\}, ext\{356\}, ext\{271\}, ext\{354\},
+ext\{427\}, ext\{465\}, ext\{440\}, ext\{539\}, ext\{646\}, ext\{457\},
+ext\{446\}, ext\{402\}, ext\{441\}, ext\{359\}, ext\{334\}, ext\{312\},
+ext\{427\}, ext\{434\}, ext\{486\}, ext\{569\}, ext\{523\}, ext\{418\},
+ext\{452\}, ext\{462\}, ext\{497\}, ext\{354\}, ext\{347\}, ext\{276\},
+ext\{472\}, ext\{487\}, ext\{505\}, ext\{619\}, ext\{640\}, ext\{559\},
+ext\{453\}, ext\{418\}, ext\{419\}, ext\{262\}, ext\{299\}, ext\{303\},
+ext\{401\}, ext\{413\}, ext\{426\}, ext\{516\}, ext\{600\}, ext\{459\},
+ext\{443\}, ext\{412\}, ext\{400\}, ext\{278\}, ext\{302\}, ext\{381\},
+ext\{279\}, ext\{442\}, ext\{409\}, ext\{416\}, ext\{511\}, ext\{393\},
+ext\{345\}, ext\{391\}, ext\{470\}, ext\{266\}, ext\{312\}, ext\{300\},
+ext\{373\}, ext\{412\}, ext\{322\}, ext\{458\}, ext\{427\}, ext\{346\},
+ext\{421\}, ext\{344\}, ext\{370\}, ext\{291\}, ext\{224\}, ext\{266\},
+ext\{338\}, ext\{298\}, ext\{386\}, ext\{479\}, ext\{473\}, ext\{332\},
+ext\{391\}, ext\{370\}, ext\{431\}, ext\{366\}, ext\{250\}, ext\{355\},
+ext\{304\}, ext\{379\}, ext\{440\}, ext\{500\}, ext\{511\}, ext\{384\},
+ext\{366\}, ext\{432\}, ext\{390\}, ext\{306\}, ext\{232\}, ext\{342\},
+ext\{329\}, ext\{394\}, ext\{355\}, ext\{385\}, ext\{463\}, ext\{453\},
+ext\{373\}, ext\{401\}, ext\{466\}, ext\{306\}, ext\{263\}, ext\{323\},
+ext\{310\}, ext\{424\}, ext\{403\}, ext\{406\}, ext\{466\}, ext\{381\},
+ext\{369\}, ext\{378\}, ext\{392\}, ext\{284\}, ext\{316\}, ext\{321\},
+ext\{358\}, ext\{378\}, ext\{382\}, ext\{433\}, ext\{506\}, ext\{428\},
+ext\{479\}, ext\{370\}, ext\{349\}, ext\{238\}, ext\{285\}, ext\{324\},
+ext\{346\}, ext\{410\}, ext\{411\}, ext\{496\}, ext\{534\}, ext\{396\},
+ext\{470\}, ext\{385\}, ext\{411\}, ext\{281\}, ext\{300\}, ext\{318\},
+ext\{391\}, ext\{398\}, ext\{337\}, ext\{477\}, ext\{422\}, ext\{495\},
+ext\{471\}, ext\{368\}, ext\{345\}, ext\{296\}, ext\{319\}, ext\{349\},
+ext\{375\}, ext\{441\}, ext\{465\}, ext\{472\}, ext\{521\}, ext\{429\},
+ext\{408\}, ext\{490\}, ext\{491\}, ext\{9059\}, ext\{7685\},
+ext\{9963\}, ext\{nsuremath\{1,0955 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,1823 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2391
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,346 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,4055 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2106
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,1372 imes 10\^{}\{4\}\}\},
+ext\{9834\}, ext\{9267\}, ext\{9130\}, ext\{8933\}, ext\{nsuremath\{1,1
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,0733 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,2912 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2926
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,399 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,4926 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,29 imes
+10\^{}\{4\}\}\}, ext\{nsuremath\{1,2034 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,0643 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,0742
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,0266 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,0281 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,1527
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2281 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,3587 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3049
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6055 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,522 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3824
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2729 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,1467 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,1351
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,0803 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,0548 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2368
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3311 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,3885 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4088
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6932 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,6164 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4883
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3532 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,222 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2025
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,1692 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,1081 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3745
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4382 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,4391 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5597
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6834 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,7282 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5779
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3946 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,2701 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,0431
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,1616 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,0808 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2421
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3605 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,4455 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5019
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5662 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,6745 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4717
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3756 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,2531 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2568
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,1249 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,1096 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2637
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3018 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,5005 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5235
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5552 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,6905 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4776
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4104 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,2854 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2956
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2177 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,1918 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3517
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4417 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,5911 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5589
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6543 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,7925 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5406
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4601 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,3107 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2268
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,1972 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,2028 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4033
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4244 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,5287 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6954
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,7361 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,7694 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6222
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4969 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,3624 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3842
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,2387 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,1608 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5021
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4834 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,6565 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6882
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,8012 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,8855 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,7243
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6045 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,4745 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3726
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,1196 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,2105 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4723
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5582 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,6863 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6758
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,7434 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,8359 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,7189
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6909 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,538 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5161
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,4027 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,4478 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6155
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6585 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,8117 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,7552
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,8299 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,9361 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,7924
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,7872 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,6058 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5746
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,5226 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,4932 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6846
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6854 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,8146 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,7559
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,8655 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,9453 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,7923
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,7915 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,6496 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3544
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,3601 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,5667 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,7358
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,8112 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,8581 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,8759
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{2,0668 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{2,104 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,8993
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,8668 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,6768 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6551
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6231 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,5511 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,8308
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,7793 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,9205 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,9162
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{2,0997 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{2,0705 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,8759
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,924 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,7504 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6591
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,6224 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,667 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,8539
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,9759 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,9584 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,9976
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{2,1486 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{2,1626 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{2,0195
+imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,9928 imes 10\^{}\{4\}\}\},
+ext\{nsuremath\{1,8564 imes 10\^{}\{4\}\}\}, ext\{nsuremath\{1,8149
+imes 10\^{}\{4\}\}\}, ext\{0,1029718\}, ext\{0,102363\},
+ext\{0,1020625\}, ext\{0,1008733\}, ext\{0,1010197\}, ext\{0,1005812\},
+ext\{0,103774\}, ext\{0,1040764\}, ext\{0,103774\}, ext\{0,1030264\},
+ext\{0,1027301\}, ext\{0,1019972\}, ext\{0,1012746\}, ext\{0,100704\},
+ext\{0,1001396\}, ext\{0,0986211\}, ext\{0,0983493\}, ext\{0,0980802\},
+ext\{0,0972792\}, ext\{0,0974106\}, ext\{0,0974252\}, ext\{0,0963806\},
+ext\{0,095739\}, ext\{0,0951063\}, ext\{0,096736\}, ext\{0,0961092\},
+ext\{0,0953673\}, ext\{0,0947096\}, ext\{0,0941176\}, ext\{0,0935322\},
+ext\{0,092954\}, ext\{0,0928398\}, ext\{0,0927247\}, ext\{0,0922697\},
+ext\{0,0917067\}, ext\{0,0912621\}, ext\{0,0907116\}, ext\{0,0902763\},
+ext\{0,0899519\}, ext\{0,0890996\}, ext\{0,0886792\}, ext\{0,0881593\},
+ext\{0,0889021\}, ext\{0,0881813\}, ext\{0,0889403\}, ext\{0,0877266\},
+ext\{0,0874288\}, ext\{0,0870354\}, ext\{0,0864499\}, ext\{0,0858726\},
+ext\{0,0853982\}, ext\{0,083822\}, ext\{0,0845908\}, ext\{0,0841369\},
+ext\{0,0837784\}, ext\{0,0835107\}, ext\{0,0828064\}, ext\{0,0811789\},
+ext\{0,0828536\}, ext\{0,0941901\}, ext\{0,0923998\}, ext\{0,1081615\},
+ext\{0,1072117\}, ext\{0,114043\}, ext\{0,1124541\}, ext\{0,1113163\},
+ext\{0,1103013\}, ext\{0,1081972\}, ext\{0,1070274\}, ext\{0,104947\},
+ext\{0,1193577\}, ext\{0,1176219\}, ext\{0,1330274\}, ext\{0,1308452\},
+ext\{0,1283185\}, ext\{0,1235474\}, ext\{0,1185868\}, ext\{0,1163375\},
+ext\{0,1151615\}, ext\{0,1145012\}, ext\{0,113523\}, ext\{0,1119302\},
+ext\{0,1106105\}, ext\{0,1152744\}, ext\{0,1137935\}, ext\{0,1123496\},
+ext\{0,1117535\}, ext\{0,1096425\}, ext\{0,1084409\}, ext\{0,1078849\},
+ext\{0,1090848\}, ext\{0,1075715\}, ext\{0,106164\}, ext\{0,1063\},
+ext\{0,1048253\}, ext\{0,1034517\}, ext\{0,1014499\}, ext\{0,1004023\},
+ext\{0,098862\}, ext\{0,1024962\}, ext\{0,1030274\}, ext\{0,1021789\},
+ext\{0,0998366\}, ext\{0,0926367\}, ext\{0,091815\}, ext\{0,0907243\},
+ext\{0,0900212\}, ext\{0,0893307\}, ext\{0,0884427\}, ext\{0,0883526\},
+ext\{0,0867574\}, ext\{0,0849952\}, ext\{0,0845679\}, ext\{0,0844319\},
+ext\{0,0843509\}, ext\{0,083601\}, ext\{0,0834173\}, ext\{0,0827451\},
+ext\{0,0852353\}, ext\{0,0847703\}, ext\{0,0844589\}, ext\{0,0853521\},
+ext\{0,0875592\}, ext\{0,0903829\}, ext\{0,0907833\}, ext\{0,1087428\},
+ext\{0,1141422\}, ext\{0,1129929\}, ext\{0,1113207\}, ext\{0,1091262\},
+ext\{0,1076985\}, ext\{0,1076016\}, ext\{0,103775\}, ext\{0,1071142\},
+ext\{0,1073748\}, ext\{0,1116954\}, ext\{0,1106382\}, ext\{0,1118552\},
+ext\{0,1097423\}, ext\{0,1081939\}, ext\{0,1062554\}, ext\{0,104193\},
+ext\{0,101934\}, ext\{0,1027938\}, ext\{0,1047603\}, ext\{0,1040025\},
+ext\{0,1166555\}, ext\{0,1151615\}, ext\{0,1129895\}, ext\{0,1138606\},
+ext\{0,1191181\}, ext\{0,12449\}, ext\{0,1232229\}, ext\{0,1206779\},
+ext\{0,121049\}, ext\{0,1169686\}, ext\{0,1127503\}, ext\{0,1080793\},
+ext\{0,1088385\}, ext\{0,1112918\}, ext\{0,111304\}, ext\{0,1154544\},
+ext\{0,1147683\}, ext\{0,1172074\}, ext\{0,1190764\}, ext\{0,1179659\},
+ext\{0,1174491\}, ext\{0,1169885\}, ext\{0,1126105\}, ext\{0,113657\},
+ext\{0,1131444\}, ext\{0,1184955\}, ext\{0,1179694\}, ext\{0,1176866\},
+ext\{0,1200592\}, ext\{0,1194377\}, ext\{0,1188813\}, ext\{0,1184624\},
+ext\{0,1180166\}, ext\{0,1177066\}, ext\{0,1177761\}, ext\{0,114797\},
+ext\{0,1157353\}, ext\{0,1153563\}, ext\{0,1148154\}, ext\{0,1147775\},
+ext\{0,114936\}, ext\{0,114797\}, ext\{0,1140932\}, ext\{0,1164655\},
+ext\{0,1160261\}, ext\{0,1160667\}, ext\{12\}, ext\{6\}, ext\{12\},
+ext\{8\}, ext\{10\}, ext\{13\}, ext\{11\}, ext\{6\}, ext\{10\},
+ext\{16\}, ext\{13\}, ext\{14\}, ext\{14\}, ext\{6\}, ext\{8\},
+ext\{11\}, ext\{7\}, ext\{13\}, ext\{13\}, ext\{11\}, ext\{11\},
+ext\{14\}, ext\{16\}, ext\{14\}, ext\{17\}, ext\{16\}, ext\{15\},
+ext\{13\}, ext\{13\}, ext\{15\}, ext\{12\}, ext\{6\}, ext\{9\},
+ext\{13\}, ext\{14\}, ext\{15\}, ext\{14\}, ext\{3\}, ext\{12\},
+ext\{13\}, ext\{12\}, ext\{8\}, ext\{8\}, ext\{15\}, ext\{8\}, ext\{5\},
+ext\{17\}, ext\{14\}, ext\{13\}, ext\{5\}, ext\{8\}, ext\{5\},
+ext\{12\}, ext\{11\}, ext\{13\}, ext\{15\}, ext\{11\}, ext\{11\},
+ext\{10\}, ext\{13\}, ext\{8\}, ext\{6\}, ext\{8\}, ext\{14\},
+ext\{12\}, ext\{14\}, ext\{13\}, ext\{9\}, ext\{4\}, ext\{13\},
+ext\{6\}, ext\{15\}, ext\{12\}, ext\{16\}, ext\{7\}, ext\{12\},
+ext\{10\}, ext\{9\}, ext\{9\}, ext\{6\}, ext\{7\}, ext\{13\}, ext\{14\},
+ext\{13\}, ext\{14\}, ext\{11\}, ext\{11\}, ext\{10\}, ext\{4\},
+ext\{8\}, ext\{9\}, ext\{10\}, ext\{10\}, ext\{5\}, ext\{13\},
+ext\{12\}, ext\{10\}, ext\{9\}, ext\{7\}, ext\{5\}, ext\{10\}, ext\{5\},
+ext\{6\}, ext\{8\}, ext\{6\}, ext\{12\}, ext\{15\}, ext\{7\}, ext\{14\},
+ext\{4\}, ext\{10\}, ext\{8\}, ext\{7\}, ext\{11\}, ext\{3\}, ext\{5\},
+ext\{11\}, ext\{10\}, ext\{10\}, ext\{7\}, ext\{10\}, ext\{11\},
+ext\{9\}, ext\{7\}, ext\{8\}, ext\{13\}, ext\{8\}, ext\{5\}, ext\{8\},
+ext\{7\}, ext\{12\}, ext\{10\}, ext\{7\}, ext\{4\}, ext\{10\}, ext\{4\},
+ext\{8\}, ext\{8\}, ext\{7\}, ext\{10\}, ext\{8\}, ext\{14\}, ext\{8\},
+ext\{9\}, ext\{8\}, ext\{6\}, ext\{7\}, ext\{6\}, ext\{5\}, ext\{4\},
+ext\{5\}, ext\{10\}, ext\{7\}, ext\{10\}, ext\{12\}, ext\{7\}, ext\{4\},
+ext\{5\}, ext\{6\}, ext\{4\}, ext\{4\}, ext\{8\}, ext\{8\}, ext\{3\},
+ext\{7\}, ext\{12\}, ext\{2\}, ext\{7\}, ext\{8\}, ext\{3\}, ext\{2\},
+ext\{6\}, ext\{3\}, ext\{7\}, ext\{6\}, ext\{8\}, ext\{8\}, ext\{4\},
+ext\{3\}, ext\{5\}, ext\{5\}, ext\{3\}, ext\{4\}, ext\{3\}, ext\{6\},
+ext\{6\}, ext\{7\}, ext\{5\}, ext\{7\}, ext\{7\}, ext\{4\}, ext\{7\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\}, ext\{0\},
+ext\{0\}, ext\{1\}, ext\{1\}, ext\{1\}, ext\{1\}, ext\{1\}, ext\{1\},
+ext\{1\}, ext\{1\}, ext\{1\}, ext\{1\}, ext\{1\}, ext\{1\}, ext\{1\},
+ext\{1\}, ext\{1\}, ext\{1\}, ext\{1\}, ext\{1\}, ext\{1\}, ext\{1\},
+ext\{1\}, ext\{1\}, ext\{1\}.
+\end{abstract}
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\pagebreak
+
+\hypertarget{caractuxe9ristiques-guxe9nuxe9rales-du-fichier}{%
+\section{Caractéristiques générales du
+fichier}\label{caractuxe9ristiques-guxe9nuxe9rales-du-fichier}}
+
+\begin{itemize}
+\tightlist
+\item
+  Nom : Seatbelts
+\item
+  Nombre de lignes : \text{192} observations
+\item
+  Nombre de colonnes : \text{8} variables
+\end{itemize}
+
+\hypertarget{types-de-variables}{%
+\section{Types de variables}\label{types-de-variables}}
+
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X}
+\hline
+Type & Nombre\\
+\hline
+\cellcolor{gray!6}{Numérique (numeric)} & \cellcolor{gray!6}{1536}\\
+\hline
+\end{tabu}
+
+\pagebreak
+
+\hypertarget{variables}{%
+\section{Variables}\label{variables}}
+
+
+\end{document}

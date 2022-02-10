@@ -4,10 +4,17 @@
 \alias{codebook}
 \title{Codebook}
 \usage{
-codebook(data)
+codebook(
+  df,
+  path = getwd(),
+  weights = NA,
+  main = deparse(substitute(file)),
+  sub = "Codebook",
+  print_table = TRUE
+)
 }
 \arguments{
-\item{data}{input data frame.}
+\item{df}{A data frame}
 }
 \value{
 A PDF file stored in the working directory.

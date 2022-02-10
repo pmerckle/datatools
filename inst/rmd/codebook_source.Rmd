@@ -5,6 +5,7 @@ geometry: margin=2cm
 header-includes:
   - \renewcommand{\contentsname}{Sommaire}
   - \renewcommand{\abstract}{Objet :}
+  - \usepackage[table]{xcolor}
   - \usepackage{booktabs}
   - \usepackage{longtable}
   - \usepackage{array}
@@ -18,7 +19,6 @@ header-includes:
   - \usepackage{threeparttablex}
   - \usepackage[normalem]{ulem}
   - \usepackage{makecell}
-  - \usepackage[table]{xcolor}
 toc: true
 toc_depth: 2
 theme: united
@@ -49,7 +49,7 @@ print_table <- params$print_table
 
 ```
 
-```{r}
+```{r packages}
 
 # > Packages ----
 
@@ -66,7 +66,7 @@ install_library("sjlabelled") # pour la fonction unlabel()
 
 ```
 
-```{r}
+```{r functions}
 
 # > Fonctions ----
 
@@ -185,7 +185,7 @@ getmode <- function(x) {
 title: "`r main`"
 subtitle: "`r sub`"
 date: "`r format(Sys.time(), 'Version générée le %A %e %B %Y à %Hh%M')`."
-abstract : "Ce document présente le dictionnaire des variables du fichier `r data`."
+abstract : "Ce document présente le dictionnaire des variables du fichier `r name`."
 ---
 
 \pagebreak
@@ -198,7 +198,7 @@ abstract : "Ce document présente le dictionnaire des variables du fichier `r da
 
 # Types de variables
 
-```{r}
+```{r summmary}
 
 tableau <- data %>% lapply(unlabel) %>% sapply(class) %>% table %>% as.data.frame
 names(tableau) <- c("Type", "Nombre")
@@ -217,7 +217,7 @@ cat(kable(tableau, format = "latex") %>% kable_styling(bootstrap_options = "cond
 
 # Variables
 
-```{r dico, warning = FALSE, message = FALSE, include = TRUE, echo = FALSE, results = "asis"}
+```{r codebook, warning = FALSE, message = FALSE, include = TRUE, echo = FALSE, results = "asis"}
 
 # Générer le dictionnaire des variables
 codebook_source(data = data, weights = weights, print_table = print_table)
