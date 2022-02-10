@@ -57,7 +57,6 @@ unaccent("Jérémie")
 cs_household("35", "64")
 gs_household("35", "64")
 
-gs_household
 
 
 # Help pages
@@ -70,6 +69,21 @@ gs_household
 
 
 # SANDBOX ----
+
+# Test chisq.stars() modifications
+
+library(questionr)
+data(hdv2003)
+
+devtools::install_github("pmerckle/datatools", force = TRUE)
+library(datatools)
+
+tableau <- table(hdv2003$sexe, hdv2003$relig)
+chisq.test(tableau)
+chisq.stars(hdv2003$sexe, hdv2003$relig)
+
+
+# Old
 
 library(tidyverse)
 library(questionr)
@@ -86,3 +100,6 @@ cs_household("32", "61")
 gs_household(55, 12)
 
 install.packages("tibble")
+
+
+
