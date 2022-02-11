@@ -34,7 +34,7 @@ library(datatools)
 # codebook
 library(questionr)
 data("hdv2003")
-codebook(hdv2003, main = "Histoires de vie 2003", sub = "Dictionnaire des variables")
+codebook(hdv2003, main = "Histoires de vie 2003", sub = "Dictionnaire des variables", description = "Table de données extraites de l'enquête Histoires de vie (Insee, 2003).\n Cette table de données est disponible dans le package `questionr`.")
 
 
 # firstnames

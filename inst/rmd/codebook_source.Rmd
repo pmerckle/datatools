@@ -27,7 +27,8 @@ params:
     name: mtcars
     weights : NA
     main: "mtcars"
-    sub: "Codebook" 
+    sub: "Codebook"
+    description: "The `mtcars` dadaset contains data extracted from the 1974 *Motor Trend* US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models). It is one of the sample datasets included in base R."
     print_table: FALSE
 ---
 
@@ -45,6 +46,7 @@ name <- params$name
 weights <- params$weights
 main <- params$main
 sub <- params$sub
+description <- params$description
 print_table <- params$print_table
 
 ```
@@ -76,6 +78,7 @@ codebook_source <- function(data = data, weights = weights, print_table = TRUE) 
   if(is.na(weights)) weights <- rep(1, nrow(data))
   if(sum(weights == 0)) weights <- rep(1, nrow(data))
   sortie <- lapply(names(data), function(x) {
+    message(paste0(which(names(data) == x), "/", ncol(data), " : ", x))
     cat(paste0("  \n## ", x))
     description <- paste0("*", attributes(data)$variable.labels[which(names(data) == x)], "*")
     if(description !="**" & description !="*NA*") cat("  \n", description, " ")
@@ -190,6 +193,10 @@ abstract : "Ce document présente le dictionnaire des variables du fichier `r na
 
 \pagebreak
 
+# Description
+
+`r description`
+
 # Caractéristiques générales du fichier
 
 * Nom : `r name`
@@ -217,11 +224,12 @@ cat(kable(tableau, format = "latex") %>% kable_styling(bootstrap_options = "cond
 
 # Variables
 
-```{r codebook, warning = FALSE, message = FALSE, include = TRUE, echo = FALSE, results = "asis"}
+```{r codebook, warning = FALSE, message = FALSE, include = TRUE, echo = FALSE, results = "asis", message = FALSE}
 
 # Générer le dictionnaire des variables
 codebook_source(data = data, weights = weights, print_table = print_table)
 
+message("Knitting LaTeX output to PDF(may take minutes)...")
 ```
 
 

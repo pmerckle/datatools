@@ -10,14 +10,27 @@ codebook(
   weights = NA,
   main = deparse(substitute(file)),
   sub = "Codebook",
+  description = "",
   print_table = TRUE
 )
 }
 \arguments{
 \item{df}{A data frame}
+
+\item{path}{Path to the data frame directory}
+
+\item{weights}{Variable containing values used to weight the dataset}
+
+\item{main}{Main codebook title}
+
+\item{sub}{Codebook subtitle}
+
+\item{description}{Data frame description text}
+
+\item{print_table}{Logical. Indicates whether frequency tables of categorical variables must be displayed}
 }
 \value{
-A PDF file stored in the working directory.
+A PDF file stored in the same directory as the data frame.
 }
 \description{
 This function builds PDF codebooks from data frames.
